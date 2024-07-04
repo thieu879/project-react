@@ -2,27 +2,28 @@
     "admin":[
         {
             "id": 1,
-            "nameUser": "admin",
+            "nameAdmin": "admin",
             "birthday":"2005/02/11",
             "address": "Hà Nội",
             "numberPhone": "0355483082",
             "email": "nguyenthieu11021995@gmail.com",
             "password":"admin",
-            "imageUser": "",
-            "statusUser": true,
+            "imageAdmin": "",
+            "statusAdmin": true,
             "role":0
         }
     ],
     "users": [
         {
             "id": 1,
-            "nameAdmin": "thieunguyen879",
+            "nameUser": "thieunguyen879",
             "birthday":"2005/02/11",
+            "address":"Nam Định",
             "numberPhone": "0355483082",
             "email": "nguyenthieu11021995@gmail.com",
             "password":"12345678",
-            "imageAdmin": "",
-            "statusAdmin": true,
+            "imageUser": "",
+            "statusUser": true,
             "role":1
         }
     ],

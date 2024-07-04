@@ -2,9 +2,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 import { Admin, LoginPayload } from "../../interface/interface";
 
-const initialState: { admins: Admin[]; loggedInAdmin: Admin | null } = {
-    admins: [],
-    loggedInAdmin: null,
+const initialState = {
+  admins: [],
+  loggedInAdmin: null,
 };
 
 export const getAdmin:any = createAsyncThunk(
@@ -19,10 +19,8 @@ export const loginAdmin:any = createAsyncThunk(
   "admin/loginAdmin",
   async ({ email, password }: LoginPayload) => {
     const response = await axios.get("http://localhost:8080/admin");
-    const admins: Admin[] = response.data;
-    const admin = admins.find(
-      admin => admin.email === email && admin.password === password
-    );
+    const admins = response.data;
+    const admin = admins.find((admin:any) => admin.email === email && admin.password === password);
     if (admin) {
       return admin;
     } else {
@@ -31,7 +29,7 @@ export const loginAdmin:any = createAsyncThunk(
   }
 );
 
-const adminReducer = createSlice({
+const adminSlice = createSlice({
   name: "admin",
   initialState,
   reducers: {},
@@ -46,4 +44,4 @@ const adminReducer = createSlice({
   },
 });
 
-export default adminReducer.reducer;
+export default adminSlice.reducer;

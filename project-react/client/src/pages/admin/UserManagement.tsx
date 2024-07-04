@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SidebarAdmin from '../../components/admin/SidebarAdmin';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortUp, faSortDown, faWrench, faTrash, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from '../../stores/reducers/userReducer';
 
 export default function UserManagement() {
+  const user = useSelector((state:any) => state.users.user);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUser());
+  }, [dispatch]);
+  
   return (
     <div className="flex">
       <SidebarAdmin />
@@ -33,48 +42,24 @@ export default function UserManagement() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            <tr className="hover:bg-gray-100">
+            {
+              user.map((item: any, index: any) => (
+                <tr className="hover:bg-gray-100">
               <td className="py-2 px-4">1</td>
-              <td className="py-2 px-4"><img src="image_url_1" alt="User 1" className="h-10 w-10 rounded-full" /></td>
-              <td className="py-2 px-4">Thiều</td>
-              <td className="py-2 px-4">01/01/1980</td>
-              <td className="py-2 px-4">jill.smith@example.com</td> 
-              <td className="py-2 px-4">123-456-7890</td>
-              <td className="py-2 px-4">123 Main St</td>
-              <td className="py-2 px-4">Active</td>
+              <td className="py-2 px-4"><img src={item.imageUser} alt="User 1" className="h-10 w-10 rounded-full" /></td>
+              <td className="py-2 px-4">{item.nameUser}</td>
+              <td className="py-2 px-4">{item.birthday}</td>
+              <td className="py-2 px-4">{item.email}</td> 
+              <td className="py-2 px-4">{item.numberPhone}</td>
+              <td className="py-2 px-4">{item.address}</td>
+              <td className="py-2 px-4">{item.statusUser}</td>
               <td className="py-2 px-4 text-center">
                 <button className="mr-2"><FontAwesomeIcon icon={faWrench} /></button>
                 <button><FontAwesomeIcon icon={faTrash} /></button>
               </td>
             </tr>
-            <tr className="hover:bg-gray-100">
-              <td className="py-2 px-4">2</td>
-              <td className="py-2 px-4"><img src="image_url_2" alt="User 2" className="h-10 w-10 rounded-full" /></td>
-              <td className="py-2 px-4">Eve Jackson</td>
-              <td className="py-2 px-4">02/02/1985</td>
-              <td className="py-2 px-4">eve.jackson@example.com</td>
-              <td className="py-2 px-4">234-567-8901</td>
-              <td className="py-2 px-4">456 Elm St</td>
-              <td className="py-2 px-4">Inactive</td>
-              <td className="py-2 px-4 text-center">
-                <button className="mr-2"><FontAwesomeIcon icon={faWrench} /></button>
-                <button><FontAwesomeIcon icon={faTrash} /></button>
-              </td>
-            </tr>
-            <tr className="hover:bg-gray-100">
-              <td className="py-2 px-4">3</td>
-              <td className="py-2 px-4"><img src="image_url_3" alt="User 3" className="h-10 w-10 rounded-full" /></td>
-              <td className="py-2 px-4">John Doe</td>
-              <td className="py-2 px-4">03/03/1990</td>
-              <td className="py-2 px-4">john.doe@example.com</td>
-              <td className="py-2 px-4">345-678-9012</td>
-              <td className="py-2 px-4">789 Pine St</td>
-              <td className="py-2 px-4">Active</td>
-              <td className="py-2 px-4 text-center">
-                <button className="mr-2"><FontAwesomeIcon icon={faWrench} /></button>
-                <button><FontAwesomeIcon icon={faTrash} /></button>
-              </td>
-            </tr>
+              ))
+            }
           </tbody>
         </table>
         <div className="flex justify-between mt-4">
