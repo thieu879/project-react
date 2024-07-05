@@ -1,11 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import adminReducer from './reducers/adminReducer';
-import userReducer from './reducers/userReducer';
+import managementReducer from './reducers/managementReducer';
 
-export const store = configureStore({
+export const store:any = configureStore({
   reducer: {
-    admin: adminReducer,
-    users: userReducer,
+    account: managementReducer
   },
 });
 

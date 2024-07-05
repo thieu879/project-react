@@ -1,24 +1,40 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { RootState } from '../../stores/store';
-import { loginAdmin } from '../../stores/reducers/adminReducer';
+import { loginAdmin, loginUser, updateAdminStatus, updateUserStatus } from '../../stores/reducers/managementReducer';
 
 export default function LogIn() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const loggedInAdmin = useSelector((state: RootState) => state.admin.loggedInAdmin);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(loginAdmin({ email, password }));
+    try {
+      if (isAdmin) {
+        const admin = await dispatch(loginAdmin({ email, password }));
+        if (admin.payload) {
+          dispatch(updateAdminStatus({ id: admin.payload.id, loginStatus: true }));
+          navigate('/adminManagement');
+        } else {
+          alert("Invalid email or password");
+        }
+      } else {
+        const user = await dispatch(loginUser({ email, password }));
+        if (user.payload) {
+          dispatch(updateUserStatus({ id: user.payload.id, loginStatus: true }));
+          navigate('/home');
+        } else {
+          alert("Invalid email or password");
+        }
+      }
+    } catch (error) {
+      console.error("Login failed", error);
+      alert("Login failed. Please try again.");
+    }
   };
-
-  if (loggedInAdmin) {
-    navigate('/admin');
-  }
 
   return (
     <div className='bg-[url("https://img.freepik.com/premium-photo/illustration-albert-einstein_1022967-4858.jpg")] bg-cover bg-no-repeat bg-center min-h-screen flex items-center justify-center'>
@@ -46,6 +62,19 @@ export default function LogIn() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-800 mb-2" htmlFor="role">Vai Trò:</label>
+            <select
+              className="border border-gray-300 px-4 py-2 rounded w-full focus:outline-none focus:border-blue-500"
+              id="role"
+              value={isAdmin ? 'admin' : 'user'}
+              onChange={(e) => setIsAdmin(e.target.value === 'admin')}
+              required
+            >
+              <option value="user">Người Dùng</option>
+              <option value="admin">Quản Trị Viên</option>
+            </select>
           </div>
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full transition duration-300 ease-in-out">Đăng Nhập</button>
         </form>

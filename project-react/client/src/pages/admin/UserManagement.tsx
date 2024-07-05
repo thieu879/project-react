@@ -3,16 +3,22 @@ import SidebarAdmin from '../../components/admin/SidebarAdmin';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortUp, faSortDown, faWrench, faTrash, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from '../../stores/reducers/userReducer';
+import { Account } from '../../interface/interface';
+import { getUsers, updateUserStatus } from '../../stores/reducers/managementReducer';
 
-export default function UserManagement() {
-  const user = useSelector((state:any) => state.users.user);
+const UserManagement: React.FC = () => {
   const dispatch = useDispatch();
+  const users: Account[] = useSelector((state: any) => state.account.users);
 
   useEffect(() => {
-    dispatch(getUser());
+    dispatch(getUsers());
   }, [dispatch]);
   
+  const handleChangeStatus = (id: number, currentStatus: boolean) => {
+    const newStatus = !currentStatus; 
+    dispatch(updateUserStatus({ id, status: newStatus }));
+  };
+
   return (
     <div className="flex">
       <SidebarAdmin />
@@ -28,38 +34,36 @@ export default function UserManagement() {
               <th className="py-2 px-4">Images</th>
               <th className="py-2 px-4 flex items-center">
                 <span className="mr-1">Name</span>
-                <div className="flex flex-col ">
+                <div className="flex flex-col">
                   <FontAwesomeIcon icon={faSortUp} className="text-gray-300 cursor-pointer" />
                   <FontAwesomeIcon icon={faSortDown} className="text-gray-300 cursor-pointer" />
                 </div>
               </th>
-              <th className="py-2 px-4">Birthday</th>
               <th className="py-2 px-4">Email</th>
               <th className="py-2 px-4">Phone Number</th>
-              <th className="py-2 px-4">Address</th>
               <th className="py-2 px-4">Status</th>
               <th className="py-2 px-4">Action</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {
-              user.map((item: any, index: any) => (
-                <tr className="hover:bg-gray-100">
-              <td className="py-2 px-4">1</td>
-              <td className="py-2 px-4"><img src={item.imageUser} alt="User 1" className="h-10 w-10 rounded-full" /></td>
-              <td className="py-2 px-4">{item.nameUser}</td>
-              <td className="py-2 px-4">{item.birthday}</td>
-              <td className="py-2 px-4">{item.email}</td> 
-              <td className="py-2 px-4">{item.numberPhone}</td>
-              <td className="py-2 px-4">{item.address}</td>
-              <td className="py-2 px-4">{item.statusUser}</td>
-              <td className="py-2 px-4 text-center">
-                <button className="mr-2"><FontAwesomeIcon icon={faWrench} /></button>
-                <button><FontAwesomeIcon icon={faTrash} /></button>
-              </td>
-            </tr>
-              ))
-            }
+            {users.map((item, index) => (
+              <tr key={item.id} className="hover:bg-gray-100">
+                <td className="py-2 px-4">{index + 1}</td>
+                <td className="py-2 px-4"><img src={item.image} alt="User" className="h-10 w-10 rounded-full" /></td>
+                <td className="py-2 px-4">{item.name}</td>
+                <td className="py-2 px-4">{item.email}</td>
+                <td className="py-2 px-4">{item.numberPhone}</td>
+                <td className="py-2 px-4">
+                  <button onClick={() => handleChangeStatus(item.id, item.status)}>
+                    {item.status ? "Active" : "Inactive"}
+                  </button>
+                </td>
+                <td className="py-2 px-4 text-center">
+                  <button className="mr-2"><FontAwesomeIcon icon={faWrench} /></button>
+                  <button><FontAwesomeIcon icon={faTrash} /></button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
         <div className="flex justify-between mt-4">
@@ -71,6 +75,10 @@ export default function UserManagement() {
           </div>
         </div>
       </div>
+      {/* modal */}
+      <div></div>
     </div>
   );
-}
+};
+
+export default UserManagement;

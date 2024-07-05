@@ -1,25 +1,18 @@
-export interface User {
-    id: number,
-    nameUser: string,
-    birthday: string,
-    numberPhone: string,
-    email: string,
-    password: string,
-    imageUser: string,
-    statusUser: boolean,
-    role: number
+export interface Account {
+  id: number;
+  name: string;
+  numberPhone: string;
+  email: string;
+  password: string;
+  image: string;
+  loginStatus:boolean,
+  status: boolean;
+  role: RoleType;
 }
 
-export interface Admin {
-    id: number,
-    nameAdmin: string,
-    birthday: string,
-    numberPhone: string,
-    email: string,
-    password: string,
-    imageAdmin: string,
-    statusAdmin: boolean,
-    role: number
+export enum RoleType {
+  User = 1,
+  Admin = 0,
 }
 
 export interface Course {
