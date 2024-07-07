@@ -6,7 +6,7 @@
       "numberPhone": "0355483082",
       "email": "nguyenthieu11021995@gmail.com",
       "password": "12345678",
-      "loginStatus": true,
+      "loginStatus": false,
       "image": "",
       "status": true,
       "role": 1
@@ -18,10 +18,9 @@
       "email": "nguyenthieu11021995@gmail.com",
       "password": "admin",
       "image": "",
-      "loginStatus": false,
+      "loginStatus": true,
       "role": 0,
-      "status": true,
-      "statusAdmin": true
+      "status": true
     }
   ],
   "course": [

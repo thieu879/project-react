@@ -1,3 +1,5 @@
+// managementReducer.ts
+
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 import { LoginPayload, Account, RoleType } from "../../interface/interface";
@@ -77,31 +79,33 @@ const adminSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder
-      .addCase(getAdmin.fulfilled, (state, action) => {
-        state.admins = action.payload;
-      })
-      .addCase(getUsers.fulfilled, (state, action) => {
-        state.users = action.payload;
-      })
-      .addCase(loginAdmin.fulfilled, (state, action) => {
-        state.loggedInAdmin = action.payload;
-      })
-      .addCase(loginUser.fulfilled, (state, action) => {
-        state.loggedInAdmin = action.payload; 
-      })
-      .addCase(updateAdminStatus.fulfilled, (state, action) => {
-        const index = state.admins.findIndex((admin) => admin.id === action.payload.id);
-        if (index !== -1) {
-          state.admins[index] = action.payload;
-        }
-      })
-      .addCase(updateUserStatus.fulfilled, (state, action) => {
-        const index = state.users.findIndex((user) => user.id === action.payload.id);
-        if (index !== -1) {
-          state.users[index] = action.payload;
-        }
-      });
+    builder.addCase(getAdmin.fulfilled, (state, action) => {
+      state.admins = action.payload;
+    });
+    builder.addCase(getUsers.fulfilled, (state, action) => {
+      state.users = action.payload;
+    });
+    builder.addCase(loginAdmin.fulfilled, (state, action) => {
+      state.loggedInAdmin = action.payload;
+    });
+    builder.addCase(loginUser.fulfilled, (state, action) => {
+      const userIndex = state.users.findIndex((user) => user.id === action.payload.id);
+      if (userIndex !== -1) {
+        state.users[userIndex] = action.payload;
+      }
+    });
+    builder.addCase(updateAdminStatus.fulfilled, (state, action) => {
+      const adminIndex = state.admins.findIndex((admin) => admin.id === action.payload.id);
+      if (adminIndex !== -1) {
+        state.admins[adminIndex].loginStatus = action.payload.loginStatus;
+      }
+    });
+    builder.addCase(updateUserStatus.fulfilled, (state, action) => {
+      const userIndex = state.users.findIndex((user) => user.id === action.payload.id);
+      if (userIndex !== -1) {
+        state.users[userIndex].loginStatus = action.payload.loginStatus;
+      }
+    });
   },
 });
 

@@ -5,10 +5,11 @@ import { faSortUp, faSortDown, faWrench, faTrash, faArrowLeft, faArrowRight } fr
 import { useDispatch, useSelector } from 'react-redux';
 import { Account } from '../../interface/interface';
 import { getUsers, updateUserStatus } from '../../stores/reducers/managementReducer';
+import { AppDispatch, RootState } from '../../stores/store';
 
 const UserManagement: React.FC = () => {
-  const dispatch = useDispatch();
-  const users: Account[] = useSelector((state: any) => state.account.users);
+  const dispatch = useDispatch<AppDispatch>();
+  const users: Account[] = useSelector((state: RootState) => state.account.users);
 
   useEffect(() => {
     dispatch(getUsers());
@@ -22,7 +23,7 @@ const UserManagement: React.FC = () => {
   return (
     <div className="flex">
       <SidebarAdmin />
-      <div className="ml-6">
+      <div className="ml-6 flex-grow">
         <div className="flex items-center mb-4">
           <input className="border-2 px-2 py-1 mr-2" type="text" placeholder="Nhập tên" />
           <button className="bg-blue-500 text-white px-4 py-1 rounded-md">Thêm User</button>
