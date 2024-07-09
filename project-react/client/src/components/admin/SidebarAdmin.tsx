@@ -13,6 +13,7 @@ export default function SidebarAdmin() {
           </div>
           <MenuItem component={<Link to="/admin" />}><i className="fa-solid fa-user"></i> User Management </MenuItem>
           <MenuItem component={<Link to="/adminManagement" />}><i className="fa-solid fa-users-gear"></i> admin Management </MenuItem>
+          <MenuItem component={<Link to="/courseManagement" />}><i className="fa-solid fa-book-open"></i> course Management </MenuItem>
           <MenuItem component={<Link to="/logIn" />}><i className="fa-solid fa-arrow-right-from-bracket"></i> log out </MenuItem>
         </Menu>
       </Sidebar>

@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import managementReducer from './reducers/managementReducer';
+import courseReducer from './reducers/courseReducer';
 
 export const store:any = configureStore({
   reducer: {
-    account: managementReducer
+    account: managementReducer,
+    course:courseReducer
   },
 });
 

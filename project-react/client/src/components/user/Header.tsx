@@ -10,12 +10,12 @@ export default function Header() {
   
   useEffect(() => {
     if (stateUsers.length !== 0) {
-      let loggedInUser = stateUsers.find((item: any) => item.loginStatus === true);
-      if (!loggedInUser) {
-        navigate('/logIn');
-      }
+      // let loggedInUser = stateUsers.find((item: any) => item.loginStatus === true);
+      // if (!loggedInUser) {
+      //   navigate('/logIn');
+      // }
     }
-  }, [stateUsers, navigate]);
+  }, [stateUsers, navigate]);   
 
   useEffect(() => {
     dispatch(getUsers());
@@ -48,6 +48,7 @@ export default function Header() {
         <div>
           <ul>
             <li>Hi {loggedInUser.name}</li>
+            <li><Link to="/infor">infor</Link></li>
             <li><button onClick={handleLogOut}>Đăng Xuất</button></li>
           </ul>
         </div>

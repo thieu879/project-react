@@ -23,11 +23,6 @@ export default function AdminManagement() {
     dispatch(updateAdminStatus({ id, loginStatus: newStatus }));
   };
 
-  const handleChangeUserStatus = (id: number, currentStatus: boolean) => {
-    const newStatus = !currentStatus;
-    dispatch(updateUserStatus({ id, loginStatus: newStatus }));
-  };
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setNewAdmin({ ...newAdmin, [name]: value });
@@ -78,30 +73,6 @@ export default function AdminManagement() {
                   <td className="py-2 px-4">{item.numberPhone}</td>
                   <td className="py-2 px-4">
                     <button onClick={() => handleChangeAdminStatus(item.id, item.loginStatus)}>
-                      {item.loginStatus ? "Active" : "Inactive"}
-                    </button>
-                  </td>
-                  <td className="py-2 px-4 text-center">
-                    <button className="mr-2">
-                      <FontAwesomeIcon icon={faWrench} />
-                    </button>
-                    <button>
-                      <FontAwesomeIcon icon={faTrash} />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-              {admins.map((item: Account, index: number) => (
-                <tr key={index} className="hover:bg-gray-100">
-                  <td className="py-2 px-4">{index + 1}</td>
-                  <td className="py-2 px-4">
-                    <img src={item.image} alt={item.name} className="h-10 w-10 rounded-full" />
-                  </td>
-                  <td className="py-2 px-4">{item.name}</td>
-                  <td className="py-2 px-4">{item.email}</td>
-                  <td className="py-2 px-4">{item.numberPhone}</td>
-                  <td className="py-2 px-4">
-                    <button onClick={() => handleChangeUserStatus(item.id, item.loginStatus)}>
                       {item.loginStatus ? "Active" : "Inactive"}
                     </button>
                   </td>

@@ -15,6 +15,11 @@ export enum RoleType {
   Admin = 0,
 }
 
+export interface LoginPayload {
+    email: string;
+    password: string;
+}
+
 export interface Course {
     id: number,
     nameCourse: string
@@ -43,10 +48,5 @@ export interface Question {
     testId: number,
     question: string,
     options: string[],
-    indexOption: number
-}
-
-export interface LoginPayload {
-    email: string;
-    password: string;
+    answer: string
 }
