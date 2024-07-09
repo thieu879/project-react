@@ -6,7 +6,7 @@
       "numberPhone": "0355483082",
       "email": "nguyenthieu11021995@gmail.com",
       "password": "12345678",
-      "loginStatus": true,
+      "loginStatus": false,
       "image": "",
       "status": true,
       "role": 1
@@ -644,837 +644,1432 @@
   ],
   "question": [
     {
-      "id":1,
-      "testId":1,
-      "question":"1+1=?",
-      "option":["1","2","3","4"],
-      "answer":"2"
+      "id": 1,
+      "testId": 1,
+      "question": "1+1=?",
+      "option": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "answer": "2"
     },
     {
-        "id": 2,
-        "testId": 1,
-        "question": "3-1=?",
-        "option": ["1", "2", "3", "4"],
-        "answer": "2"
+      "id": 2,
+      "testId": 1,
+      "question": "3-1=?",
+      "option": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "answer": "2"
     },
     {
-        "id": 3,
-        "testId": 1,
-        "question": "5+2=?",
-        "option": ["6", "7", "8", "9"],
-        "answer": "7"
+      "id": 3,
+      "testId": 1,
+      "question": "5+2=?",
+      "option": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "answer": "7"
     },
     {
-        "id": 4,
-        "testId": 1,
-        "question": "4-3=?",
-        "option": ["0", "1", "2", "3"],
-        "answer": "1"
+      "id": 4,
+      "testId": 1,
+      "question": "4-3=?",
+      "option": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "answer": "1"
     },
     {
-        "id": 5,
-        "testId": 1,
-        "question": "6+1=?",
-        "option": ["6", "7", "8", "9"],
-        "answer": "7"
+      "id": 5,
+      "testId": 1,
+      "question": "6+1=?",
+      "option": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "answer": "7"
     },
     {
-        "id": 6,
-        "testId": 1,
-        "question": "2+3=?",
-        "option": ["4", "5", "6", "7"],
-        "answer": "5"
+      "id": 6,
+      "testId": 1,
+      "question": "2+3=?",
+      "option": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "answer": "5"
     },
     {
-        "id": 7,
-        "testId": 1,
-        "question": "7-2=?",
-        "option": ["4", "5", "6", "7"],
-        "answer": "5"
+      "id": 7,
+      "testId": 1,
+      "question": "7-2=?",
+      "option": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "answer": "5"
     },
     {
-        "id": 8,
-        "testId": 1,
-        "question": "8-3=?",
-        "option": ["4", "5", "6", "7"],
-        "answer": "5"
+      "id": 8,
+      "testId": 1,
+      "question": "8-3=?",
+      "option": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "answer": "5"
     },
     {
-        "id": 9,
-        "testId": 1,
-        "question": "9+0=?",
-        "option": ["8", "9", "10", "11"],
-        "answer": "9"
+      "id": 9,
+      "testId": 1,
+      "question": "9+0=?",
+      "option": [
+        "8",
+        "9",
+        "10",
+        "11"
+      ],
+      "answer": "9"
     },
     {
-        "id": 10,
-        "testId": 1,
-        "question": "2+2=?",
-        "option": ["3", "4", "5", "6"],
-        "answer": "4"
+      "id": 10,
+      "testId": 1,
+      "question": "2+2=?",
+      "option": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "answer": "4"
     },
     {
-        "id": 11,
-        "testId": 2,
-        "question": "1+2=?",
-        "option": ["2", "3", "4", "5"],
-        "answer": "3"
+      "id": 11,
+      "testId": 2,
+      "question": "1+2=?",
+      "option": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answer": "3"
     },
     {
-        "id": 12,
-        "testId": 2,
-        "question": "4-1=?",
-        "option": ["2", "3", "4", "5"],
-        "answer": "3"
+      "id": 12,
+      "testId": 2,
+      "question": "4-1=?",
+      "option": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answer": "3"
     },
     {
-        "id": 13,
-        "testId": 2,
-        "question": "2+5=?",
-        "option": ["6", "7", "8", "9"],
-        "answer": "7"
+      "id": 13,
+      "testId": 2,
+      "question": "2+5=?",
+      "option": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "answer": "7"
     },
     {
-        "id": 14,
-        "testId": 2,
-        "question": "6-4=?",
-        "option": ["1", "2", "3", "4"],
-        "answer": "2"
+      "id": 14,
+      "testId": 2,
+      "question": "6-4=?",
+      "option": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "answer": "2"
     },
     {
-        "id": 15,
-        "testId": 2,
-        "question": "3+3=?",
-        "option": ["5", "6", "7", "8"],
-        "answer": "6"
+      "id": 15,
+      "testId": 2,
+      "question": "3+3=?",
+      "option": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "answer": "6"
     },
     {
-        "id": 16,
-        "testId": 2,
-        "question": "5-2=?",
-        "option": ["2", "3", "4", "5"],
-        "answer": "3"
+      "id": 16,
+      "testId": 2,
+      "question": "5-2=?",
+      "option": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answer": "3"
     },
     {
-        "id": 17,
-        "testId": 2,
-        "question": "7+1=?",
-        "option": ["7", "8", "9", "10"],
-        "answer": "8"
+      "id": 17,
+      "testId": 2,
+      "question": "7+1=?",
+      "option": [
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "answer": "8"
     },
     {
-        "id": 18,
-        "testId": 2,
-        "question": "8-4=?",
-        "option": ["3", "4", "5", "6"],
-        "answer": "4"
+      "id": 18,
+      "testId": 2,
+      "question": "8-4=?",
+      "option": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "answer": "4"
     },
     {
-        "id": 19,
-        "testId": 2,
-        "question": "9-5=?",
-        "option": ["3", "4", "5", "6"],
-        "answer": "4"
+      "id": 19,
+      "testId": 2,
+      "question": "9-5=?",
+      "option": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "answer": "4"
     },
     {
-        "id": 20,
-        "testId": 2,
-        "question": "2+6=?",
-        "option": ["7", "8", "9", "10"],
-        "answer": "8"
+      "id": 20,
+      "testId": 2,
+      "question": "2+6=?",
+      "option": [
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "answer": "8"
     },
     {
       "id": 21,
       "testId": 3,
       "question": "Tiếng có âm ch là?",
-      "option": ["chín", "thăm", "quê", "sữa"],
+      "option": [
+        "chín",
+        "thăm",
+        "quê",
+        "sữa"
+      ],
       "answer": "chín"
     },
     {
-        "id": 22,
-        "testId": 3,
-        "question": "Từ nào có âm g?",
-        "option": ["gà", "mèo", "bò", "chó"],
-        "answer": "gà"
-    },
-    {
-        "id": 23,
-        "testId": 3,
-        "question": "Tiếng có âm nh là?",
-        "option": ["nhà", "cây", "hoa", "nắng"],
-        "answer": "nhà"
-    },
-    {
-        "id": 24,
-        "testId": 3,
-        "question": "Từ nào có âm tr?",
-        "option": ["trẻ", "vui", "học", "lớp"],
-        "answer": "trẻ"
-    },
-    {
-        "id": 25,
-        "testId": 3,
-        "question": "Tiếng có âm th là?",
-        "option": ["thỏ", "chim", "gà", "vịt"],
-        "answer": "thỏ"
-    },
-    {
-        "id": 26,
-        "testId": 3,
-        "question": "Từ nào có âm c?",
-        "option": ["cá", "bướm", "ong", "kiến"],
-        "answer": "cá"
-    },
-    {
-        "id": 27,
-        "testId": 3,
-        "question": "Tiếng có âm l là?",
-        "option": ["lợn", "trâu", "bò", "ngựa"],
-        "answer": "lợn"
-    },
-    {
-        "id": 28,
-        "testId": 3,
-        "question": "Từ nào có âm p?",
-        "option": ["phở", "cơm", "cháo", "bánh"],
-        "answer": "phở"
-    },
-    {
-        "id": 29,
-        "testId": 3,
-        "question": "Tiếng có âm v là?",
-        "option": ["vịt", "gà", "lợn", "bò"],
-        "answer": "vịt"
-    },
-    {
-        "id": 30,
-        "testId": 3,
-        "question": "Từ nào có âm d?",
-        "option": ["dê", "hổ", "sư tử", "voi"],
-        "answer": "dê"
-    },
-    {
-        "id": 31,
-        "testId": 4,
-        "question": "Tiếng có âm s là?",
-        "option": ["sông", "biển", "núi", "đồi"],
-        "answer": "sông"
-    },
-    {
-        "id": 32,
-        "testId": 4,
-        "question": "Cái gì bay cao nhất?",
-        "option": ["máy bay", "chim", "cá", "con thoi"],
-        "answer": "con thoi"
-    },
-    {
-        "id": 33,
-        "testId": 4,
-        "question": "Cái gì lớn nhất?",
-        "option": ["chim", "sao", "mặt trời", "máy bay"],
-        "answer": "mặt trời"
-    },
-    {
-        "id": 34,
-        "testId": 4,
-        "question": "Con gì nhỏ nhất?",
-        "option": ["con muoi", "con so", "con chuot", "con ngua"],
-        "answer": "con muoi"
-    },
-    {
-        "id": 35,
-        "testId": 4,
-        "question": "Cái gì chạy nhanh nhất?",
-        "option": ["xe hoi", "xe dap", "xe may", "nguoi"],
-        "answer": "nguoi"
-    },
-    {
-        "id": 36,
-        "testId": 4,
-        "question": "Cái gì chạy chậm nhất?",
-        "option": ["thoi gian", "con ngua", "con voi", "con trau"],
-        "answer": "con trau"
-    },
-    {
-        "id": 37,
-        "testId": 4,
-        "question": "Con gì hay ăn lén?",
-        "option": ["con muoi", "con so", "con chuot", "con ngua"],
-        "answer": "con chuot"
-    },
-    {
-        "id": 38,
-        "testId": 4,
-        "question": "Con gì hay hút máu người?",
-        "option": ["con muoi", "con so", "con chuot", "con ngua"],
-        "answer": "con so"
-    },
-    {
-        "id": 39,
-        "testId": 4,
-        "question": "Con gì sợ nước?",
-        "option": ["con so", "con ca", "con chuot", "con ngua"],
-        "answer": "con so"
-    },
-    {
-        "id": 40,
-        "testId": 4,
-        "question": "Cái gì ở dưới biển?",
-        "option": ["con ca", "con so", "con chuot", "con ngua"],
-        "answer": "con ca"
-    },
-    {
-        "id": 41,
-        "testId": 5,
-        "question": "write 'a' or 'an' for the word after 'eraser'?",
-        "option": ["a","an","a/an","a and an"],
-        "answer": "an"
-    },
-    {
-        "id": 42,
-        "testId": 5,
-        "question": "write 'a' or 'an' for the word after 'apple'?",
-        "option": ["a", "an", "a/an", "a and an"],
-        "answer": "an"
-    },
-    {
-        "id": 43,
-        "testId": 5,
-        "question": "write 'a' or 'an' for the word after 'elephant'?",
-        "option": ["a", "an", "a/an", "a and an"],
-        "answer": "an"
-    },
-    {
-        "id": 44,
-        "testId": 5,
-        "question": "write 'a' or 'an' for the word after 'umbrella'?",
-        "option": ["a", "an", "a/an", "a and an"],
-        "answer": "an"
-    },
-    {
-        "id": 45,
-        "testId": 5,
-        "question": "write 'a' or 'an' for the word after 'egg'?",
-        "option": ["a", "an", "a/an", "a and an"],
-        "answer": "an"
-    },
-    {
-        "id": 46,
-        "testId": 5,
-        "question": "write 'a' or 'an' for the word after 'orange'?",
-        "option": ["a", "an", "a/an", "a and an"],
-        "answer": "an"
-    },
-    {
-        "id": 47,
-        "testId": 5,
-        "question": "write 'a' or 'an' for the word after 'igloo'?",
-        "option": ["a", "an", "a/an", "a and an"],
-        "answer": "an"
-    },
-    {
-        "id": 48,
-        "testId": 5,
-        "question": "write 'a' or 'an' for the word after 'owl'?",
-        "option": ["a", "an", "a/an", "a and an"],
-        "answer": "an"
-    },
-    {
-        "id": 49,
-        "testId": 5,
-        "question": "write 'a' or 'an' for the word after 'igloo'?",
-        "option": ["a", "an", "a/an", "a and an"],
-        "answer": "an"
-    },
-    {
-        "id": 50,
-        "testId": 5,
-        "question": "write 'a' or 'an' for the word after 'umbrella'?",
-        "option": ["a", "an", "a/an", "a and an"],
-        "answer": "an"
-    },
-    {
-        "id": 51,
-        "testId": 6,
-        "question": "write 'a' or 'an' for the word after 'ice cream'?",
-        "option": ["a", "an", "a/an", "a and an"],
-        "answer": "an"
-    },
-    {
-        "id": 52,
-        "testId": 6,
-        "question": "write 'a' or 'an' for the word after 'elephant'?",
-        "option": ["a", "an", "a/an", "a and an"],
-        "answer": "an"
-    },
-    {
-        "id": 53,
-        "testId": 6,
-        "question": "write 'a' or 'an' for the word after 'orange'?",
-        "option": ["a", "an", "a/an", "a and an"],
-        "answer": "an"
-    },
-    {
-        "id": 54,
-        "testId": 6,
-        "question": "write 'a' or 'an' for the word after 'umbrella'?",
-        "option": ["a", "an", "a/an", "a and an"],
-        "answer": "an"
-    },
-    {
-        "id": 55,
-        "testId": 6,
-        "question": "write 'a' or 'an' for the word after 'apple'?",
-        "option": ["a", "an", "a/an", "a and an"],
-        "answer": "an"
-    },
-    {
-        "id": 56,
-        "testId": 6,
-        "question": "write 'a' or 'an' for the word after 'igloo'?",
-        "option": ["a", "an", "a/an", "a and an"],
-        "answer": "an"
-    },
-    {
-        "id": 57,
-        "testId": 6,
-        "question": "write 'a' or 'an' for the word after 'owl'?",
-        "option": ["a", "an", "a/an", "a and an"],
-        "answer": "an"
-    },
-    {
-        "id": 58,
-        "testId": 6,
-        "question": "write 'a' or 'an' for the word after 'egg'?",
-        "option": ["a", "an", "a/an", "a and an"],
-        "answer": "an"
-    },
-    {
-        "id": 59,
-        "testId": 6,
-        "question": "write 'a' or 'an' for the word after 'igloo'?",
-        "option": ["a", "an", "a/an", "a and an"],
-        "answer": "an"
-    },
-    {
-        "id": 60,
-        "testId": 6,
-        "question": "write 'a' or 'an' for the word after 'umbrella'?",
-        "option": ["a", "an", "a/an", "a and an"],
-        "answer": "an"
-    },
-    {
-        "id": 61,
-        "testId": 7,
-        "question": "Trong các số 214, 178, 187, 241. Số bé nhất là?",
-        "option": ["214", "178", "187", "241"],
-        "answer": "178"
-    },
-     {
-        "id": 62,
-        "testId": 7,
-        "question": "Trong các số 345, 299, 301, 378. Số lớn nhất là?",
-        "option": ["345", "299", "301", "378"],
-        "answer": "378"
-    },
-    {
-        "id": 63,
-        "testId": 7,
-        "question": "Trong các số 456, 500, 489, 478. Số lớn nhất là?",
-        "option": ["456", "500", "489", "478"],
-        "answer": "500"
-    },
-    {
-        "id": 64,
-        "testId": 7,
-        "question": "Trong các số 123, 150, 130, 145. Số bé nhất là?",
-        "option": ["123", "150", "130", "145"],
-        "answer": "123"
-    },
-    {
-        "id": 65,
-        "testId": 7,
-        "question": "Trong các số 98, 104, 101, 97. Số bé nhất là?",
-        "option": ["98", "104", "101", "97"],
-        "answer": "97"
-    },
-    {
-        "id": 66,
-        "testId": 7,
-        "question": "Trong các số 76, 85, 90, 82. Số bé nhất là?",
-        "option": ["76", "85", "90", "82"],
-        "answer": "76"
-    },
-    {
-        "id": 67,
-        "testId": 7,
-        "question": "Trong các số 200, 199, 198, 201. Số bé nhất là?",
-        "option": ["200", "199", "198", "201"],
-        "answer": "198"
-    },
-    {
-        "id": 68,
-        "testId": 7,
-        "question": "Trong các số 400, 450, 425, 410. Số lớn nhất là?",
-        "option": ["400", "450", "425", "410"],
-        "answer": "450"
-    },
-    {
-        "id": 69,
-        "testId": 7,
-        "question": "Trong các số 67, 72, 68, 69. Số lớn nhất là?",
-        "option": ["67", "72", "68", "69"],
-        "answer": "72"
-    },
-    {
-        "id": 70,
-        "testId": 7,
-        "question": "Trong các số 88, 77, 99, 66. Số lớn nhất là?",
-        "option": ["88", "77", "99", "66"],
-        "answer": "99"
-    },
-    {
-        "id": 71,
-        "testId": 8,
-        "question": "Trong các số 512, 500, 515, 518. Số bé nhất là?",
-        "option": ["512", "500", "515", "518"],
-        "answer": "500"
-    },
-     {
-        "id": 72,
-        "testId": 8,
-        "question": "Trong các số 134, 178, 156, 199. Số bé nhất là?",
-        "option": ["134", "178", "156", "199"],
-        "answer": "134"
-    },
-    {
-        "id": 73,
-        "testId": 8,
-        "question": "Trong các số 245, 289, 257, 230. Số lớn nhất là?",
-        "option": ["245", "289", "257", "230"],
-        "answer": "289"
-    },
-    {
-        "id": 74,
-        "testId": 8,
-        "question": "Trong các số 325, 315, 305, 310. Số bé nhất là?",
-        "option": ["325", "315", "305", "310"],
-        "answer": "305"
-    },
-    {
-        "id": 75,
-        "testId": 8,
-        "question": "Trong các số 420, 410, 415, 425. Số lớn nhất là?",
-        "option": ["420", "410", "415", "425"],
-        "answer": "425"
-    },
-    {
-        "id": 76,
-        "testId": 8,
-        "question": "Trong các số 150, 175, 180, 145. Số bé nhất là?",
-        "option": ["150", "175", "180", "145"],
-        "answer": "145"
-    },
-    {
-        "id": 77,
-        "testId": 8,
-        "question": "Trong các số 290, 280, 275, 295. Số lớn nhất là?",
-        "option": ["290", "280", "275", "295"],
-        "answer": "295"
-    },
-    {
-        "id": 78,
-        "testId": 8,
-        "question": "Trong các số 110, 120, 105, 115. Số bé nhất là?",
-        "option": ["110", "120", "105", "115"],
-        "answer": "105"
-    },
-    {
-        "id": 79,
-        "testId": 8,
-        "question": "Trong các số 355, 360, 345, 350. Số bé nhất là?",
-        "option": ["355", "360", "345", "350"],
-        "answer": "345"
-    },
-    {
-        "id": 80,
-        "testId": 8,
-        "question": "Trong các số 405, 410, 400, 415. Số bé nhất là?",
-        "option": ["405", "410", "400", "415"],
-        "answer": "400"
-    },
-    {
-        "id": 81,
-        "testId": 9,
-        "question": "Điền vào chỗ chấm ch hay tr: cây ...e?",
-        "option": ["ch", "tr", "không biết", "chịu"],
-        "answer": "tr"
-    },
-    {
-        "id": 82,
-        "testId": 9,
-        "question": "Điền vào chỗ chấm ch hay tr: con ...ó?",
-        "option": ["ch", "tr", "không biết", "chịu"],
-        "answer": "ch"
-    },
-    {
-        "id": 83,
-        "testId": 9,
-        "question": "Điền vào chỗ chấm ch hay tr: ...ái tim?",
-        "option": ["ch", "tr", "không biết", "chịu"],
-        "answer": "tr"
-    },
-    {
-        "id": 84,
-        "testId": 9,
-        "question": "Điền vào chỗ chấm ch hay tr: ...ường học?",
-        "option": ["ch", "tr", "không biết", "chịu"],
-        "answer": "tr"
-    },
-    {
-        "id": 85,
-        "testId": 9,
-        "question": "Điền vào chỗ chấm ch hay tr: con ...uột?",
-        "option": ["ch", "tr", "không biết", "chịu"],
-        "answer": "ch"
-    },
-    {
-        "id": 86,
-        "testId": 9,
-        "question": "Điền vào chỗ chấm ch hay tr: ...ơi đất?",
-        "option": ["ch", "tr", "không biết", "chịu"],
-        "answer": "tr"
-    },
-    {
-        "id": 87,
-        "testId": 9,
-        "question": "Điền vào chỗ chấm ch hay tr: ...anh em?",
-        "option": ["ch", "tr", "không biết", "chịu"],
-        "answer": "ch"
-    },
-    {
-        "id": 88,
-        "testId": 9,
-        "question": "Điền vào chỗ chấm ch hay tr: ...iều mới?",
-        "option": ["ch", "tr", "không biết", "chịu"],
-        "answer": "điều mới"
-    },
-    {
-        "id": 89,
-        "testId": 9,
-        "question": "Điền vào chỗ chấm ch hay tr: ...á lạ?",
-        "option": ["ch", "tr", "không biết", "chịu"],
-        "answer": "tr"
-    },
-    {
-        "id": 90,
-        "testId": 9,
-        "question": "Điền vào chỗ chấm ch hay tr: ...ai người?",
-        "option": ["ch", "tr", "không biết", "chịu"],
-        "answer": "ch"
-    },
-    {
-        "id": 91,
-        "testId": 10,
-        "question": "Điền vào chỗ chấm ch hay tr: ...ắc chắn?",
-        "option": ["ch", "tr", "không biết", "chịu"],
-        "answer": "ch"
-    },
-    {
-        "id": 92,
-        "testId": 10,
-        "question": "Điền vào chỗ chấm ch hay tr: ...ung thu?",
-        "option": ["ch", "tr", "không biết", "chịu"],
-        "answer": "tr"
-    },
-    {
-        "id": 93,
-        "testId": 10,
-        "question": "Điền vào chỗ chấm ch hay tr: ...ân thành?",
-        "option": ["ch", "tr", "không biết", "chịu"],
-        "answer": "ch"
-    },
-    {
-        "id": 94,
-        "testId": 10,
-        "question": "Điền vào chỗ chấm ch hay tr: ...ợ lý?",
-        "option": ["ch", "tr", "không biết", "chịu"],
-        "answer": "tr"
-    },
-    {
-        "id": 95,
-        "testId": 10,
-        "question": "Điền vào chỗ chấm ch hay tr: ...iều khiển?",
-        "option": ["ch", "tr", "không biết", "chịu"],
-        "answer": "điều khiển"
-    },
-    {
-        "id": 96,
-        "testId": 10,
-        "question": "Điền vào chỗ chấm ch hay tr: ...àng trai?",
-        "option": ["ch", "tr", "không biết", "chịu"],
-        "answer": "tr"
-    },
-    {
-        "id": 97,
-        "testId": 10,
-        "question": "Điền vào chỗ chấm ch hay tr: ...ân thật?",
-        "option": ["ch", "tr", "không biết", "chịu"],
-        "answer": "ch"
-    },
-    {
-        "id": 98,
-        "testId": 10,
-        "question": "Điền vào chỗ chấm ch hay tr: ...áo dài?",
-        "option": ["ch", "tr", "không biết", "chịu"],
-        "answer": "áo dài"
-    },
-    {
-        "id": 99,
-        "testId": 10,
-        "question": "Điền vào chỗ chấm ch hay tr: ...úc mừng?",
-        "option": ["ch", "tr", "không biết", "chịu"],
-        "answer": "ch"
-    },
-    {
-        "id": 100,
-        "testId": 10,
-        "question": "Điền vào chỗ chấm ch hay tr: ...ở mới?",
-        "option": ["ch", "tr", "không biết", "chịu"],
-        "answer": "tr"
-    },
-    {
-        "id": 102,
-        "testId": 11,
-        "question": "animal/ this/ What/ is/ ?/?",
-        "option": ["What animal is this?", "What this animal is?", "What is this animal?", "What is animal this?"],
-        "answer": "What animal is this?"
-    },
-    {
-        "id": 103,
-        "testId": 11,
-        "question": "color/ What/ is/ it/ ?/?",
-        "option": ["What color is it?", "What is it color?", "What is color it?", "What color it is?"],
-        "answer": "What color is it?"
-    },
-    {
-        "id": 104,
-        "testId": 11,
-        "question": "book/ This/ your/ is/ ?/?",
-        "option": ["This is your book?", "Your book this is?", "Is this your book?", "This book is your?"],
-        "answer": "Is this your book?"
-    },
-    {
-        "id": 105,
-        "testId": 11,
-        "question": "name/ What/ your/ is/ ?/?",
-        "option": ["What name is your?", "What your name is?", "Is your name what?", "What is your name?"],
-        "answer": "What is your name?"
-    },
-    {
-        "id": 106,
-        "testId": 11,
-        "question": "your/ Where/ house/ is/ ?/?",
-        "option": ["Where is your house?", "Your house is where?", "Is your house where?", "House where is your?"],
-        "answer": "Where is your house?"
-    },
-    {
-        "id": 107,
-        "testId": 11,
-        "question": "How/ old/ you/ are/ ?/?",
-        "option": ["How old are you?", "How are you old?", "Old how are you?", "You how old are?"],
-        "answer": "How old are you?"
-    },
-    {
-        "id": 108,
-        "testId": 11,
-        "question": "this/ a/ Is/ cat/ ?/?",
-        "option": ["Is this a cat?", "Is a this cat?", "Cat this is a?", "This cat is a?"],
-        "answer": "Is this a cat?"
-    },
-    {
-        "id": 109,
-        "testId": 11,
-        "question": "pen/ This/ a/ is/ ./.?",
-        "option": ["This a pen is.", "Pen is this a.", "Is this a pen.", "This is a pen."],
-        "answer": "This is a pen."
-    },
-    {
-        "id": 110,
-        "testId": 11,
-        "question": "your/ Where/ school/ is/ ?/?",
-        "option": ["Where your school is?", "School is where your?", "Is your school where?", "Where is your school?"],
-        "answer": "Where is your school?"
-    },
-    {
-        "id": 111,
-        "testId": 12,
-        "question": "ball/ This/ a/ is/ ./.?",
-        "option": ["Ball this is a.", "Is this a ball.", "This is a ball.", "Is a this ball."],
-        "answer": "This is a ball."
-    },
-    {
-        "id": 112,
-        "testId": 12,
-        "question": "What/ is/ this/ ?/?",
-        "option": ["This is what?", "What is this?", "This what is?", "What this is?"],
-        "answer": "What is this?"
-    },
-    {
-        "id": 113,
-        "testId": 12,
-        "question": "What/ time/ is/ it/ ?/?",
-        "option": ["What time is it?", "Is it what time?", "What is time it?", "It is what time?"],
-        "answer": "What time is it?"
-    },
-    {
-        "id": 114,
-        "testId": 12,
-        "question": "apple/ This/ is/ an/ ./.?",
-        "option": ["This an apple is.", "Is this an apple.", "An apple is this.", "This is an apple."],
-        "answer": "This is an apple."
-    },
-    {
-        "id": 115,
-        "testId": 12,
-        "question": "Where/ you/ do/ live/ ?/?",
-        "option": ["Do you live where?", "Where live do you?", "Where do you live?", "You do live where?"],
-        "answer": "Where do you live?"
-    },
-    {
-        "id": 116,
-        "testId": 12,
-        "question": "Are/ you/ happy/ ?/?",
-        "option": ["Are you happy?", "Happy you are?", "You happy are?", "Are happy you?"],
-        "answer": "Are you happy?"
-    },
-    {
-        "id": 117,
-        "testId": 12,
-        "question": "Is/ this/ your/ dog/ ?/?",
-        "option": ["This is your dog?", "Your dog this is?", "Is this your dog?", "Dog is this your?"],
-        "answer": "Is this your dog?"
-    },
-    {
-        "id": 118,
-        "testId": 12,
-        "question": "blue/ The/ sky/ is/ ./.?",
-        "option": ["The sky is blue.", "Sky the blue is.", "Is the sky blue.", "Blue is the sky."],
-        "answer": "The sky is blue."
-    },
-    {
-        "id": 119,
-        "testId": 12,
-        "question": "What/ your/ name/ is/ ?/?",
-        "option": ["What your name is?", "Name what is your?", "Is your name what?", "What is your name?"],
-        "answer": "What is your name?"
-    },
-    {
-        "id": 120,
-        "testId": 12,
-        "question": "My/ name/ is/ John/ ./.?",
-        "option": ["Is my name John.", "My name is John.", "John is my name.", "Name my John is."],
-        "answer": "My name is John."
+      "id": 22,
+      "testId": 3,
+      "question": "Từ nào có âm g?",
+      "option": [
+        "gà",
+        "mèo",
+        "bò",
+        "chó"
+      ],
+      "answer": "gà"
+    },
+    {
+      "id": 23,
+      "testId": 3,
+      "question": "Tiếng có âm nh là?",
+      "option": [
+        "nhà",
+        "cây",
+        "hoa",
+        "nắng"
+      ],
+      "answer": "nhà"
+    },
+    {
+      "id": 24,
+      "testId": 3,
+      "question": "Từ nào có âm tr?",
+      "option": [
+        "trẻ",
+        "vui",
+        "học",
+        "lớp"
+      ],
+      "answer": "trẻ"
+    },
+    {
+      "id": 25,
+      "testId": 3,
+      "question": "Tiếng có âm th là?",
+      "option": [
+        "thỏ",
+        "chim",
+        "gà",
+        "vịt"
+      ],
+      "answer": "thỏ"
+    },
+    {
+      "id": 26,
+      "testId": 3,
+      "question": "Từ nào có âm c?",
+      "option": [
+        "cá",
+        "bướm",
+        "ong",
+        "kiến"
+      ],
+      "answer": "cá"
+    },
+    {
+      "id": 27,
+      "testId": 3,
+      "question": "Tiếng có âm l là?",
+      "option": [
+        "lợn",
+        "trâu",
+        "bò",
+        "ngựa"
+      ],
+      "answer": "lợn"
+    },
+    {
+      "id": 28,
+      "testId": 3,
+      "question": "Từ nào có âm p?",
+      "option": [
+        "phở",
+        "cơm",
+        "cháo",
+        "bánh"
+      ],
+      "answer": "phở"
+    },
+    {
+      "id": 29,
+      "testId": 3,
+      "question": "Tiếng có âm v là?",
+      "option": [
+        "vịt",
+        "gà",
+        "lợn",
+        "bò"
+      ],
+      "answer": "vịt"
+    },
+    {
+      "id": 30,
+      "testId": 3,
+      "question": "Từ nào có âm d?",
+      "option": [
+        "dê",
+        "hổ",
+        "sư tử",
+        "voi"
+      ],
+      "answer": "dê"
+    },
+    {
+      "id": 31,
+      "testId": 4,
+      "question": "Tiếng có âm s là?",
+      "option": [
+        "sông",
+        "biển",
+        "núi",
+        "đồi"
+      ],
+      "answer": "sông"
+    },
+    {
+      "id": 32,
+      "testId": 4,
+      "question": "Cái gì bay cao nhất?",
+      "option": [
+        "máy bay",
+        "chim",
+        "cá",
+        "con thoi"
+      ],
+      "answer": "con thoi"
+    },
+    {
+      "id": 33,
+      "testId": 4,
+      "question": "Cái gì lớn nhất?",
+      "option": [
+        "chim",
+        "sao",
+        "mặt trời",
+        "máy bay"
+      ],
+      "answer": "mặt trời"
+    },
+    {
+      "id": 34,
+      "testId": 4,
+      "question": "Con gì nhỏ nhất?",
+      "option": [
+        "con muoi",
+        "con so",
+        "con chuot",
+        "con ngua"
+      ],
+      "answer": "con muoi"
+    },
+    {
+      "id": 35,
+      "testId": 4,
+      "question": "Cái gì chạy nhanh nhất?",
+      "option": [
+        "xe hoi",
+        "xe dap",
+        "xe may",
+        "nguoi"
+      ],
+      "answer": "nguoi"
+    },
+    {
+      "id": 36,
+      "testId": 4,
+      "question": "Cái gì chạy chậm nhất?",
+      "option": [
+        "thoi gian",
+        "con ngua",
+        "con voi",
+        "con trau"
+      ],
+      "answer": "con trau"
+    },
+    {
+      "id": 37,
+      "testId": 4,
+      "question": "Con gì hay ăn lén?",
+      "option": [
+        "con muoi",
+        "con so",
+        "con chuot",
+        "con ngua"
+      ],
+      "answer": "con chuot"
+    },
+    {
+      "id": 38,
+      "testId": 4,
+      "question": "Con gì hay hút máu người?",
+      "option": [
+        "con muoi",
+        "con so",
+        "con chuot",
+        "con ngua"
+      ],
+      "answer": "con so"
+    },
+    {
+      "id": 39,
+      "testId": 4,
+      "question": "Con gì sợ nước?",
+      "option": [
+        "con so",
+        "con ca",
+        "con chuot",
+        "con ngua"
+      ],
+      "answer": "con so"
+    },
+    {
+      "id": 40,
+      "testId": 4,
+      "question": "Cái gì ở dưới biển?",
+      "option": [
+        "con ca",
+        "con so",
+        "con chuot",
+        "con ngua"
+      ],
+      "answer": "con ca"
+    },
+    {
+      "id": 41,
+      "testId": 5,
+      "question": "write 'a' or 'an' for the word after 'eraser'?",
+      "option": [
+        "a",
+        "an",
+        "a/an",
+        "a and an"
+      ],
+      "answer": "an"
+    },
+    {
+      "id": 42,
+      "testId": 5,
+      "question": "write 'a' or 'an' for the word after 'apple'?",
+      "option": [
+        "a",
+        "an",
+        "a/an",
+        "a and an"
+      ],
+      "answer": "an"
+    },
+    {
+      "id": 43,
+      "testId": 5,
+      "question": "write 'a' or 'an' for the word after 'elephant'?",
+      "option": [
+        "a",
+        "an",
+        "a/an",
+        "a and an"
+      ],
+      "answer": "an"
+    },
+    {
+      "id": 44,
+      "testId": 5,
+      "question": "write 'a' or 'an' for the word after 'umbrella'?",
+      "option": [
+        "a",
+        "an",
+        "a/an",
+        "a and an"
+      ],
+      "answer": "an"
+    },
+    {
+      "id": 45,
+      "testId": 5,
+      "question": "write 'a' or 'an' for the word after 'egg'?",
+      "option": [
+        "a",
+        "an",
+        "a/an",
+        "a and an"
+      ],
+      "answer": "an"
+    },
+    {
+      "id": 46,
+      "testId": 5,
+      "question": "write 'a' or 'an' for the word after 'orange'?",
+      "option": [
+        "a",
+        "an",
+        "a/an",
+        "a and an"
+      ],
+      "answer": "an"
+    },
+    {
+      "id": 47,
+      "testId": 5,
+      "question": "write 'a' or 'an' for the word after 'igloo'?",
+      "option": [
+        "a",
+        "an",
+        "a/an",
+        "a and an"
+      ],
+      "answer": "an"
+    },
+    {
+      "id": 48,
+      "testId": 5,
+      "question": "write 'a' or 'an' for the word after 'owl'?",
+      "option": [
+        "a",
+        "an",
+        "a/an",
+        "a and an"
+      ],
+      "answer": "an"
+    },
+    {
+      "id": 49,
+      "testId": 5,
+      "question": "write 'a' or 'an' for the word after 'igloo'?",
+      "option": [
+        "a",
+        "an",
+        "a/an",
+        "a and an"
+      ],
+      "answer": "an"
+    },
+    {
+      "id": 50,
+      "testId": 5,
+      "question": "write 'a' or 'an' for the word after 'umbrella'?",
+      "option": [
+        "a",
+        "an",
+        "a/an",
+        "a and an"
+      ],
+      "answer": "an"
+    },
+    {
+      "id": 51,
+      "testId": 6,
+      "question": "write 'a' or 'an' for the word after 'ice cream'?",
+      "option": [
+        "a",
+        "an",
+        "a/an",
+        "a and an"
+      ],
+      "answer": "an"
+    },
+    {
+      "id": 52,
+      "testId": 6,
+      "question": "write 'a' or 'an' for the word after 'elephant'?",
+      "option": [
+        "a",
+        "an",
+        "a/an",
+        "a and an"
+      ],
+      "answer": "an"
+    },
+    {
+      "id": 53,
+      "testId": 6,
+      "question": "write 'a' or 'an' for the word after 'orange'?",
+      "option": [
+        "a",
+        "an",
+        "a/an",
+        "a and an"
+      ],
+      "answer": "an"
+    },
+    {
+      "id": 54,
+      "testId": 6,
+      "question": "write 'a' or 'an' for the word after 'umbrella'?",
+      "option": [
+        "a",
+        "an",
+        "a/an",
+        "a and an"
+      ],
+      "answer": "an"
+    },
+    {
+      "id": 55,
+      "testId": 6,
+      "question": "write 'a' or 'an' for the word after 'apple'?",
+      "option": [
+        "a",
+        "an",
+        "a/an",
+        "a and an"
+      ],
+      "answer": "an"
+    },
+    {
+      "id": 56,
+      "testId": 6,
+      "question": "write 'a' or 'an' for the word after 'igloo'?",
+      "option": [
+        "a",
+        "an",
+        "a/an",
+        "a and an"
+      ],
+      "answer": "an"
+    },
+    {
+      "id": 57,
+      "testId": 6,
+      "question": "write 'a' or 'an' for the word after 'owl'?",
+      "option": [
+        "a",
+        "an",
+        "a/an",
+        "a and an"
+      ],
+      "answer": "an"
+    },
+    {
+      "id": 58,
+      "testId": 6,
+      "question": "write 'a' or 'an' for the word after 'egg'?",
+      "option": [
+        "a",
+        "an",
+        "a/an",
+        "a and an"
+      ],
+      "answer": "an"
+    },
+    {
+      "id": 59,
+      "testId": 6,
+      "question": "write 'a' or 'an' for the word after 'igloo'?",
+      "option": [
+        "a",
+        "an",
+        "a/an",
+        "a and an"
+      ],
+      "answer": "an"
+    },
+    {
+      "id": 60,
+      "testId": 6,
+      "question": "write 'a' or 'an' for the word after 'umbrella'?",
+      "option": [
+        "a",
+        "an",
+        "a/an",
+        "a and an"
+      ],
+      "answer": "an"
+    },
+    {
+      "id": 61,
+      "testId": 7,
+      "question": "Trong các số 214, 178, 187, 241. Số bé nhất là?",
+      "option": [
+        "214",
+        "178",
+        "187",
+        "241"
+      ],
+      "answer": "178"
+    },
+    {
+      "id": 62,
+      "testId": 7,
+      "question": "Trong các số 345, 299, 301, 378. Số lớn nhất là?",
+      "option": [
+        "345",
+        "299",
+        "301",
+        "378"
+      ],
+      "answer": "378"
+    },
+    {
+      "id": 63,
+      "testId": 7,
+      "question": "Trong các số 456, 500, 489, 478. Số lớn nhất là?",
+      "option": [
+        "456",
+        "500",
+        "489",
+        "478"
+      ],
+      "answer": "500"
+    },
+    {
+      "id": 64,
+      "testId": 7,
+      "question": "Trong các số 123, 150, 130, 145. Số bé nhất là?",
+      "option": [
+        "123",
+        "150",
+        "130",
+        "145"
+      ],
+      "answer": "123"
+    },
+    {
+      "id": 65,
+      "testId": 7,
+      "question": "Trong các số 98, 104, 101, 97. Số bé nhất là?",
+      "option": [
+        "98",
+        "104",
+        "101",
+        "97"
+      ],
+      "answer": "97"
+    },
+    {
+      "id": 66,
+      "testId": 7,
+      "question": "Trong các số 76, 85, 90, 82. Số bé nhất là?",
+      "option": [
+        "76",
+        "85",
+        "90",
+        "82"
+      ],
+      "answer": "76"
+    },
+    {
+      "id": 67,
+      "testId": 7,
+      "question": "Trong các số 200, 199, 198, 201. Số bé nhất là?",
+      "option": [
+        "200",
+        "199",
+        "198",
+        "201"
+      ],
+      "answer": "198"
+    },
+    {
+      "id": 68,
+      "testId": 7,
+      "question": "Trong các số 400, 450, 425, 410. Số lớn nhất là?",
+      "option": [
+        "400",
+        "450",
+        "425",
+        "410"
+      ],
+      "answer": "450"
+    },
+    {
+      "id": 69,
+      "testId": 7,
+      "question": "Trong các số 67, 72, 68, 69. Số lớn nhất là?",
+      "option": [
+        "67",
+        "72",
+        "68",
+        "69"
+      ],
+      "answer": "72"
+    },
+    {
+      "id": 70,
+      "testId": 7,
+      "question": "Trong các số 88, 77, 99, 66. Số lớn nhất là?",
+      "option": [
+        "88",
+        "77",
+        "99",
+        "66"
+      ],
+      "answer": "99"
+    },
+    {
+      "id": 71,
+      "testId": 8,
+      "question": "Trong các số 512, 500, 515, 518. Số bé nhất là?",
+      "option": [
+        "512",
+        "500",
+        "515",
+        "518"
+      ],
+      "answer": "500"
+    },
+    {
+      "id": 72,
+      "testId": 8,
+      "question": "Trong các số 134, 178, 156, 199. Số bé nhất là?",
+      "option": [
+        "134",
+        "178",
+        "156",
+        "199"
+      ],
+      "answer": "134"
+    },
+    {
+      "id": 73,
+      "testId": 8,
+      "question": "Trong các số 245, 289, 257, 230. Số lớn nhất là?",
+      "option": [
+        "245",
+        "289",
+        "257",
+        "230"
+      ],
+      "answer": "289"
+    },
+    {
+      "id": 74,
+      "testId": 8,
+      "question": "Trong các số 325, 315, 305, 310. Số bé nhất là?",
+      "option": [
+        "325",
+        "315",
+        "305",
+        "310"
+      ],
+      "answer": "305"
+    },
+    {
+      "id": 75,
+      "testId": 8,
+      "question": "Trong các số 420, 410, 415, 425. Số lớn nhất là?",
+      "option": [
+        "420",
+        "410",
+        "415",
+        "425"
+      ],
+      "answer": "425"
+    },
+    {
+      "id": 76,
+      "testId": 8,
+      "question": "Trong các số 150, 175, 180, 145. Số bé nhất là?",
+      "option": [
+        "150",
+        "175",
+        "180",
+        "145"
+      ],
+      "answer": "145"
+    },
+    {
+      "id": 77,
+      "testId": 8,
+      "question": "Trong các số 290, 280, 275, 295. Số lớn nhất là?",
+      "option": [
+        "290",
+        "280",
+        "275",
+        "295"
+      ],
+      "answer": "295"
+    },
+    {
+      "id": 78,
+      "testId": 8,
+      "question": "Trong các số 110, 120, 105, 115. Số bé nhất là?",
+      "option": [
+        "110",
+        "120",
+        "105",
+        "115"
+      ],
+      "answer": "105"
+    },
+    {
+      "id": 79,
+      "testId": 8,
+      "question": "Trong các số 355, 360, 345, 350. Số bé nhất là?",
+      "option": [
+        "355",
+        "360",
+        "345",
+        "350"
+      ],
+      "answer": "345"
+    },
+    {
+      "id": 80,
+      "testId": 8,
+      "question": "Trong các số 405, 410, 400, 415. Số bé nhất là?",
+      "option": [
+        "405",
+        "410",
+        "400",
+        "415"
+      ],
+      "answer": "400"
+    },
+    {
+      "id": 81,
+      "testId": 9,
+      "question": "Điền vào chỗ chấm ch hay tr: cây ...e?",
+      "option": [
+        "ch",
+        "tr",
+        "không biết",
+        "chịu"
+      ],
+      "answer": "tr"
+    },
+    {
+      "id": 82,
+      "testId": 9,
+      "question": "Điền vào chỗ chấm ch hay tr: con ...ó?",
+      "option": [
+        "ch",
+        "tr",
+        "không biết",
+        "chịu"
+      ],
+      "answer": "ch"
+    },
+    {
+      "id": 83,
+      "testId": 9,
+      "question": "Điền vào chỗ chấm ch hay tr: ...ái tim?",
+      "option": [
+        "ch",
+        "tr",
+        "không biết",
+        "chịu"
+      ],
+      "answer": "tr"
+    },
+    {
+      "id": 84,
+      "testId": 9,
+      "question": "Điền vào chỗ chấm ch hay tr: ...ường học?",
+      "option": [
+        "ch",
+        "tr",
+        "không biết",
+        "chịu"
+      ],
+      "answer": "tr"
+    },
+    {
+      "id": 85,
+      "testId": 9,
+      "question": "Điền vào chỗ chấm ch hay tr: con ...uột?",
+      "option": [
+        "ch",
+        "tr",
+        "không biết",
+        "chịu"
+      ],
+      "answer": "ch"
+    },
+    {
+      "id": 86,
+      "testId": 9,
+      "question": "Điền vào chỗ chấm ch hay tr: ...ơi đất?",
+      "option": [
+        "ch",
+        "tr",
+        "không biết",
+        "chịu"
+      ],
+      "answer": "tr"
+    },
+    {
+      "id": 87,
+      "testId": 9,
+      "question": "Điền vào chỗ chấm ch hay tr: ...anh em?",
+      "option": [
+        "ch",
+        "tr",
+        "không biết",
+        "chịu"
+      ],
+      "answer": "ch"
+    },
+    {
+      "id": 88,
+      "testId": 9,
+      "question": "Điền vào chỗ chấm ch hay tr: ...iều mới?",
+      "option": [
+        "ch",
+        "tr",
+        "không biết",
+        "chịu"
+      ],
+      "answer": "điều mới"
+    },
+    {
+      "id": 89,
+      "testId": 9,
+      "question": "Điền vào chỗ chấm ch hay tr: ...á lạ?",
+      "option": [
+        "ch",
+        "tr",
+        "không biết",
+        "chịu"
+      ],
+      "answer": "tr"
+    },
+    {
+      "id": 90,
+      "testId": 9,
+      "question": "Điền vào chỗ chấm ch hay tr: ...ai người?",
+      "option": [
+        "ch",
+        "tr",
+        "không biết",
+        "chịu"
+      ],
+      "answer": "ch"
+    },
+    {
+      "id": 91,
+      "testId": 10,
+      "question": "Điền vào chỗ chấm ch hay tr: ...ắc chắn?",
+      "option": [
+        "ch",
+        "tr",
+        "không biết",
+        "chịu"
+      ],
+      "answer": "ch"
+    },
+    {
+      "id": 92,
+      "testId": 10,
+      "question": "Điền vào chỗ chấm ch hay tr: ...ung thu?",
+      "option": [
+        "ch",
+        "tr",
+        "không biết",
+        "chịu"
+      ],
+      "answer": "tr"
+    },
+    {
+      "id": 93,
+      "testId": 10,
+      "question": "Điền vào chỗ chấm ch hay tr: ...ân thành?",
+      "option": [
+        "ch",
+        "tr",
+        "không biết",
+        "chịu"
+      ],
+      "answer": "ch"
+    },
+    {
+      "id": 94,
+      "testId": 10,
+      "question": "Điền vào chỗ chấm ch hay tr: ...ợ lý?",
+      "option": [
+        "ch",
+        "tr",
+        "không biết",
+        "chịu"
+      ],
+      "answer": "tr"
+    },
+    {
+      "id": 95,
+      "testId": 10,
+      "question": "Điền vào chỗ chấm ch hay tr: ...iều khiển?",
+      "option": [
+        "ch",
+        "tr",
+        "không biết",
+        "chịu"
+      ],
+      "answer": "điều khiển"
+    },
+    {
+      "id": 96,
+      "testId": 10,
+      "question": "Điền vào chỗ chấm ch hay tr: ...àng trai?",
+      "option": [
+        "ch",
+        "tr",
+        "không biết",
+        "chịu"
+      ],
+      "answer": "tr"
+    },
+    {
+      "id": 97,
+      "testId": 10,
+      "question": "Điền vào chỗ chấm ch hay tr: ...ân thật?",
+      "option": [
+        "ch",
+        "tr",
+        "không biết",
+        "chịu"
+      ],
+      "answer": "ch"
+    },
+    {
+      "id": 98,
+      "testId": 10,
+      "question": "Điền vào chỗ chấm ch hay tr: ...áo dài?",
+      "option": [
+        "ch",
+        "tr",
+        "không biết",
+        "chịu"
+      ],
+      "answer": "áo dài"
+    },
+    {
+      "id": 99,
+      "testId": 10,
+      "question": "Điền vào chỗ chấm ch hay tr: ...úc mừng?",
+      "option": [
+        "ch",
+        "tr",
+        "không biết",
+        "chịu"
+      ],
+      "answer": "ch"
+    },
+    {
+      "id": 100,
+      "testId": 10,
+      "question": "Điền vào chỗ chấm ch hay tr: ...ở mới?",
+      "option": [
+        "ch",
+        "tr",
+        "không biết",
+        "chịu"
+      ],
+      "answer": "tr"
+    },
+    {
+      "id": 102,
+      "testId": 11,
+      "question": "animal/ this/ What/ is/ ?/?",
+      "option": [
+        "What animal is this?",
+        "What this animal is?",
+        "What is this animal?",
+        "What is animal this?"
+      ],
+      "answer": "What animal is this?"
+    },
+    {
+      "id": 103,
+      "testId": 11,
+      "question": "color/ What/ is/ it/ ?/?",
+      "option": [
+        "What color is it?",
+        "What is it color?",
+        "What is color it?",
+        "What color it is?"
+      ],
+      "answer": "What color is it?"
+    },
+    {
+      "id": 104,
+      "testId": 11,
+      "question": "book/ This/ your/ is/ ?/?",
+      "option": [
+        "This is your book?",
+        "Your book this is?",
+        "Is this your book?",
+        "This book is your?"
+      ],
+      "answer": "Is this your book?"
+    },
+    {
+      "id": 105,
+      "testId": 11,
+      "question": "name/ What/ your/ is/ ?/?",
+      "option": [
+        "What name is your?",
+        "What your name is?",
+        "Is your name what?",
+        "What is your name?"
+      ],
+      "answer": "What is your name?"
+    },
+    {
+      "id": 106,
+      "testId": 11,
+      "question": "your/ Where/ house/ is/ ?/?",
+      "option": [
+        "Where is your house?",
+        "Your house is where?",
+        "Is your house where?",
+        "House where is your?"
+      ],
+      "answer": "Where is your house?"
+    },
+    {
+      "id": 107,
+      "testId": 11,
+      "question": "How/ old/ you/ are/ ?/?",
+      "option": [
+        "How old are you?",
+        "How are you old?",
+        "Old how are you?",
+        "You how old are?"
+      ],
+      "answer": "How old are you?"
+    },
+    {
+      "id": 108,
+      "testId": 11,
+      "question": "this/ a/ Is/ cat/ ?/?",
+      "option": [
+        "Is this a cat?",
+        "Is a this cat?",
+        "Cat this is a?",
+        "This cat is a?"
+      ],
+      "answer": "Is this a cat?"
+    },
+    {
+      "id": 109,
+      "testId": 11,
+      "question": "pen/ This/ a/ is/ ./.?",
+      "option": [
+        "This a pen is.",
+        "Pen is this a.",
+        "Is this a pen.",
+        "This is a pen."
+      ],
+      "answer": "This is a pen."
+    },
+    {
+      "id": 110,
+      "testId": 11,
+      "question": "your/ Where/ school/ is/ ?/?",
+      "option": [
+        "Where your school is?",
+        "School is where your?",
+        "Is your school where?",
+        "Where is your school?"
+      ],
+      "answer": "Where is your school?"
+    },
+    {
+      "id": 111,
+      "testId": 12,
+      "question": "ball/ This/ a/ is/ ./.?",
+      "option": [
+        "Ball this is a.",
+        "Is this a ball.",
+        "This is a ball.",
+        "Is a this ball."
+      ],
+      "answer": "This is a ball."
+    },
+    {
+      "id": 112,
+      "testId": 12,
+      "question": "What/ is/ this/ ?/?",
+      "option": [
+        "This is what?",
+        "What is this?",
+        "This what is?",
+        "What this is?"
+      ],
+      "answer": "What is this?"
+    },
+    {
+      "id": 113,
+      "testId": 12,
+      "question": "What/ time/ is/ it/ ?/?",
+      "option": [
+        "What time is it?",
+        "Is it what time?",
+        "What is time it?",
+        "It is what time?"
+      ],
+      "answer": "What time is it?"
+    },
+    {
+      "id": 114,
+      "testId": 12,
+      "question": "apple/ This/ is/ an/ ./.?",
+      "option": [
+        "This an apple is.",
+        "Is this an apple.",
+        "An apple is this.",
+        "This is an apple."
+      ],
+      "answer": "This is an apple."
+    },
+    {
+      "id": 115,
+      "testId": 12,
+      "question": "Where/ you/ do/ live/ ?/?",
+      "option": [
+        "Do you live where?",
+        "Where live do you?",
+        "Where do you live?",
+        "You do live where?"
+      ],
+      "answer": "Where do you live?"
+    },
+    {
+      "id": 116,
+      "testId": 12,
+      "question": "Are/ you/ happy/ ?/?",
+      "option": [
+        "Are you happy?",
+        "Happy you are?",
+        "You happy are?",
+        "Are happy you?"
+      ],
+      "answer": "Are you happy?"
+    },
+    {
+      "id": 117,
+      "testId": 12,
+      "question": "Is/ this/ your/ dog/ ?/?",
+      "option": [
+        "This is your dog?",
+        "Your dog this is?",
+        "Is this your dog?",
+        "Dog is this your?"
+      ],
+      "answer": "Is this your dog?"
+    },
+    {
+      "id": 118,
+      "testId": 12,
+      "question": "blue/ The/ sky/ is/ ./.?",
+      "option": [
+        "The sky is blue.",
+        "Sky the blue is.",
+        "Is the sky blue.",
+        "Blue is the sky."
+      ],
+      "answer": "The sky is blue."
+    },
+    {
+      "id": 119,
+      "testId": 12,
+      "question": "What/ your/ name/ is/ ?/?",
+      "option": [
+        "What your name is?",
+        "Name what is your?",
+        "Is your name what?",
+        "What is your name?"
+      ],
+      "answer": "What is your name?"
+    },
+    {
+      "id": 120,
+      "testId": 12,
+      "question": "My/ name/ is/ John/ ./.?",
+      "option": [
+        "Is my name John.",
+        "My name is John.",
+        "John is my name.",
+        "Name my John is."
+      ],
+      "answer": "My name is John."
     }
   ]
 }

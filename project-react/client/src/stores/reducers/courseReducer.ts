@@ -18,7 +18,7 @@ const initialState: CourseState = {
   questions: [],
 };
 
-export const getCourses: any = createAsyncThunk(
+export const getCourses:any = createAsyncThunk(
   "course/getCourses",
   async () => {
     const response = await axios.get("http://localhost:8080/course");
@@ -26,7 +26,7 @@ export const getCourses: any = createAsyncThunk(
   }
 );
 
-export const getClasses: any = createAsyncThunk(
+export const getClasses:any = createAsyncThunk(
   "course/getClasses",
   async (courseId: number) => {
     const response = await axios.get(`http://localhost:8080/class?courseId=${courseId}`);
@@ -34,7 +34,7 @@ export const getClasses: any = createAsyncThunk(
   }
 );
 
-export const getSubjects: any = createAsyncThunk(
+export const getSubjects:any = createAsyncThunk(
   "course/getSubjects",
   async (classId: number) => {
     const response = await axios.get(`http://localhost:8080/subject?classId=${classId}`);
@@ -42,7 +42,7 @@ export const getSubjects: any = createAsyncThunk(
   }
 );
 
-export const getTests: any = createAsyncThunk(
+export const getTests:any = createAsyncThunk(
   "course/getTests",
   async (subjectId: number) => {
     const response = await axios.get(`http://localhost:8080/test?subjectId=${subjectId}`);
@@ -50,7 +50,7 @@ export const getTests: any = createAsyncThunk(
   }
 );
 
-export const getQuestions: any = createAsyncThunk(
+export const getQuestions:any = createAsyncThunk(
   "course/getQuestions",
   async (testId: number) => {
     const response = await axios.get(`http://localhost:8080/question?testId=${testId}`);
@@ -58,7 +58,7 @@ export const getQuestions: any = createAsyncThunk(
   }
 );
 
-export const deleteCourse: any = createAsyncThunk(
+export const deleteCourse:any = createAsyncThunk(
   "course/deleteCourse",
   async (courseId: number) => {
     await axios.delete(`http://localhost:8080/course/${courseId}`);
@@ -66,7 +66,7 @@ export const deleteCourse: any = createAsyncThunk(
   }
 );
 
-export const deleteClass: any = createAsyncThunk(
+export const deleteClass:any = createAsyncThunk(
   "course/deleteClass",
   async (classId: number) => {
     await axios.delete(`http://localhost:8080/class/${classId}`);
@@ -74,7 +74,7 @@ export const deleteClass: any = createAsyncThunk(
   }
 );
 
-export const deleteSubject: any = createAsyncThunk(
+export const deleteSubject:any = createAsyncThunk(
   "course/deleteSubject",
   async (subjectId: number) => {
     await axios.delete(`http://localhost:8080/subject/${subjectId}`);
@@ -82,7 +82,7 @@ export const deleteSubject: any = createAsyncThunk(
   }
 );
 
-export const deleteTest: any = createAsyncThunk(
+export const deleteTest:any = createAsyncThunk(
   "course/deleteTest",
   async (testId: number) => {
     await axios.delete(`http://localhost:8080/test/${testId}`);
@@ -90,11 +90,48 @@ export const deleteTest: any = createAsyncThunk(
   }
 );
 
-export const deleteQuestion: any = createAsyncThunk(
+export const deleteQuestion:any = createAsyncThunk(
   "course/deleteQuestion",
   async (questionId: number) => {
     await axios.delete(`http://localhost:8080/question/${questionId}`);
     return questionId;
+  }
+);
+
+export const addCourse:any = createAsyncThunk(
+  "course/addCourse",
+  async (course) => {
+    const response = await axios.post("http://localhost:8080/course", course);
+    return response.data;
+  }
+);
+
+export const addClass:any = createAsyncThunk(
+  "class/addClass",
+  async (classItem) => {
+    const response = await axios.post("http://localhost:8080/class", classItem);
+    return response.data;
+  }
+);
+export const addSubject:any = createAsyncThunk(
+  "subject/addSubject",
+  async (subject) => {
+    const response = await axios.post("http://localhost:8080/subject", subject);
+    return response.data;
+  }
+);
+export const addTest:any = createAsyncThunk(
+  "test/addTest",
+  async (test) => {
+    const response = await axios.post("http://localhost:8080/test", test);
+    return response.data;
+  }
+);
+export const addQuestion:any = createAsyncThunk(
+  "question/addQuestion",
+  async (question) => {
+    const response = await axios.post("http://localhost:8080/question", question);
+    return response.data;
   }
 );
 
@@ -132,6 +169,21 @@ const courseSlice = createSlice({
     });
     builder.addCase(deleteQuestion.fulfilled, (state, action) => {
       state.questions = state.questions.filter((question) => question.id !== action.payload);
+    });
+    builder.addCase(addCourse.fulfilled, (state, action) => {
+      state.courses.push(action.payload);
+    });
+    builder.addCase(addClass.fulfilled, (state, action) => {
+      state.classes.push(action.payload);
+    });
+    builder.addCase(addSubject.fulfilled, (state, action) => {
+      state.subjects.push(action.payload);
+    });
+    builder.addCase(addTest.fulfilled, (state, action) => {
+      state.tests.push(action.payload);
+    });
+    builder.addCase(addQuestion.fulfilled, (state, action) => {
+      state.questions.push(action.payload);
     });
   },
 });
