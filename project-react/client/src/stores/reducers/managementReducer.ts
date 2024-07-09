@@ -2,6 +2,7 @@
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
+import CryptoJS from 'crypto-js';
 import { LoginPayload, Account, RoleType } from "../../interface/interface";
 
 interface AdminState {
@@ -36,7 +37,10 @@ export const loginAdmin:any = createAsyncThunk(
   "admin/loginAdmin",
   async ({ email, password }: LoginPayload) => {
     const response = await axios.get<Account[]>("http://localhost:8080/account");
-    const admin = response.data.find((admin) => admin.email === email && admin.password === password && admin.role === RoleType.Admin);
+    const admin = response.data.find((admin) => {
+      const decryptedPassword = CryptoJS.AES.decrypt(admin.password, 'secret key 123').toString(CryptoJS.enc.Utf8);
+      return admin.email === email && decryptedPassword === password && admin.role === RoleType.Admin;
+    });
     if (admin) {
       return admin;
     } else {
@@ -49,7 +53,10 @@ export const loginUser:any = createAsyncThunk(
   "admin/loginUser",
   async ({ email, password }: LoginPayload) => {
     const response = await axios.get<Account[]>("http://localhost:8080/account");
-    const user = response.data.find((user) => user.email === email && user.password === password && user.role === RoleType.User);
+    const user = response.data.find((user) => {
+      const decryptedPassword = CryptoJS.AES.decrypt(user.password, 'secret key 123').toString(CryptoJS.enc.Utf8);
+      return user.email === email && decryptedPassword === password && user.role === RoleType.User;
+    });
     if (user) {
       return user;
     } else {

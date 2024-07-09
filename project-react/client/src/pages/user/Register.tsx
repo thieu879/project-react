@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import CryptoJS from 'crypto-js';
 
 export default function Register() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    username: '',
+    name: '',
     phone: '',
     email: '',
     password: '',
@@ -34,11 +35,15 @@ export default function Register() {
         alert('Mật khẩu không khớp. Vui lòng kiểm tra lại.');
         return;
       }
+      
+      // Mã hóa mật khẩu
+      const encryptedPassword = CryptoJS.AES.encrypt(formData.password, 'secret key 123').toString();
+
       const response = await axios.post('http://localhost:8080/account', {
-        nameUser: formData.username,
+        name: formData.name,
         numberPhone: formData.phone,
         email: formData.email,
-        password: formData.password,
+        password: encryptedPassword,
         loginStatus: formData.loginStatus,
         image: formData.image,
         status: formData.status,
@@ -60,13 +65,13 @@ export default function Register() {
         <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Đăng Ký</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-800 mb-2" htmlFor="username">Tên đăng nhập:</label>
+            <label className="block text-gray-800 mb-2" htmlFor="name">Tên đăng nhập:</label>
             <input
               className="border w-[400px] border-gray-300 px-4 py-2 rounded focus:outline-none focus:border-blue-500"
               type="text"
-              id="username"
-              name="username"
-              value={formData.username}
+              id="name"
+              name="name"
+              value={formData.name}
               onChange={handleChange}
               required
             />
