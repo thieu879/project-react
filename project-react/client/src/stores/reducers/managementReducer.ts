@@ -1,5 +1,3 @@
-// managementReducer.ts
-
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 import CryptoJS from 'crypto-js';
@@ -81,6 +79,32 @@ export const updateUserStatus:any = createAsyncThunk(
   }
 );
 
+export const addAdmin:any = createAsyncThunk(
+  "admin/addAdmin",
+  async (newAdmin: Account) => {
+    const encryptedPassword = CryptoJS.AES.encrypt(newAdmin.password, 'secret key 123').toString();
+    const response = await axios.post<Account>("http://localhost:8080/account", { ...newAdmin, password: encryptedPassword });
+    return response.data;
+  }
+);
+
+export const updateAdmin:any = createAsyncThunk(
+  "admin/updateAdmin",
+  async (updatedAdmin: Account) => {
+    const encryptedPassword = CryptoJS.AES.encrypt(updatedAdmin.password, 'secret key 123').toString();
+    const response = await axios.put<Account>(`http://localhost:8080/account/${updatedAdmin.id}`, { ...updatedAdmin, password: encryptedPassword });
+    return response.data;
+  }
+);
+
+export const deleteAdmin:any = createAsyncThunk(
+  "admin/deleteAdmin",
+  async (id: number) => {
+    await axios.delete(`http://localhost:8080/account/${id}`);
+    return id;
+  }
+);
+
 const adminSlice = createSlice({
   name: "admin",
   initialState,
@@ -112,6 +136,18 @@ const adminSlice = createSlice({
       if (userIndex !== -1) {
         state.users[userIndex].loginStatus = action.payload.loginStatus;
       }
+    });
+    builder.addCase(addAdmin.fulfilled, (state, action) => {
+      state.admins.push(action.payload);
+    });
+    builder.addCase(updateAdmin.fulfilled, (state, action) => {
+      const index = state.admins.findIndex((admin) => admin.id === action.payload.id);
+      if (index !== -1) {
+        state.admins[index] = action.payload;
+      }
+    });
+    builder.addCase(deleteAdmin.fulfilled, (state, action) => {
+      state.admins = state.admins.filter((admin) => admin.id !== action.payload);
     });
   },
 });

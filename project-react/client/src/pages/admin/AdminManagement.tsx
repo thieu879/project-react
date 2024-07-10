@@ -1,17 +1,17 @@
-// AdminManagement.tsx
-
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import SidebarAdmin from '../../components/admin/SidebarAdmin';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight, faSortDown, faSortUp, faTrash, faWrench } from '@fortawesome/free-solid-svg-icons';
-import { getAdmin, updateAdminStatus, updateUserStatus } from '../../stores/reducers/managementReducer';
+import { getAdmin, updateAdminStatus, addAdmin, updateAdmin, deleteAdmin } from '../../stores/reducers/managementReducer';
 import { Account } from '../../interface/interface';
 
 export default function AdminManagement() {
   const dispatch = useDispatch();
-  const admins = useSelector((state: any) => state.account.admins); 
+  const admins = useSelector((state: any) => state.account.admins);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [currentAdminId, setCurrentAdminId] = useState<number | null>(null);
   const [newAdmin, setNewAdmin] = useState({ name: '', email: '', numberPhone: '', status: true, image: '', role: 0, password: '', loginStatus: false });
 
   useEffect(() => {
@@ -28,8 +28,27 @@ export default function AdminManagement() {
     setNewAdmin({ ...newAdmin, [name]: value });
   };
 
-  const handleSubmit = () => {
+  const handleEditAdmin = (admin: Account) => {
+    setNewAdmin(admin);
+    setIsEditMode(true);
+    setIsModalOpen(true);
+    setCurrentAdminId(admin.id);
+  };
+
+  const handleDeleteAdmin = (id: number) => {
+    dispatch(deleteAdmin(id));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isEditMode && currentAdminId !== null) {
+      dispatch(updateAdmin({ ...newAdmin, id: currentAdminId }));
+    } else {
+      dispatch(addAdmin(newAdmin));
+    }
     setIsModalOpen(false);
+    setIsEditMode(false);
+    setNewAdmin({ name: '', email: '', numberPhone: '', status: true, image: '', role: 0, password: '', loginStatus: false });
   };
 
   return (
@@ -77,10 +96,10 @@ export default function AdminManagement() {
                     </button>
                   </td>
                   <td className="py-2 px-4 text-center">
-                    <button className="mr-2">
+                    <button className="mr-2" onClick={() => handleEditAdmin(item)}>
                       <FontAwesomeIcon icon={faWrench} />
                     </button>
-                    <button>
+                    <button onClick={() => handleDeleteAdmin(item.id)}>
                       <FontAwesomeIcon icon={faTrash} />
                     </button>
                   </td>
@@ -105,8 +124,8 @@ export default function AdminManagement() {
 
       {isModalOpen && (
         <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
-          <div className="bg-white p-6 rounded shadow-lg">
-            <h2 className="text-2xl mb-4">Thêm Admin</h2>
+          <div className="bg-white p-6 rounded shadow-lg w-[400px]">
+            <h2 className="text-2xl mb-4">{isEditMode ? "Chỉnh sửa Admin" : "Thêm Admin"}</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label className="block mb-2">Name</label>
@@ -137,6 +156,17 @@ export default function AdminManagement() {
                   type="text"
                   name="numberPhone"
                   value={newAdmin.numberPhone}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block mb-2">Password</label>
+                <input
+                  className="border-2 px-2 py-1 w-full"
+                  type="password"
+                  name="password"
+                  value={newAdmin.password}
                   onChange={handleInputChange}
                   required
                 />

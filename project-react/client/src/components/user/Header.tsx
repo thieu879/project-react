@@ -7,15 +7,7 @@ export default function Header() {
   const stateUsers = useSelector((state:any) => state.account.users);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
-  useEffect(() => {
-    if (stateUsers.length !== 0) {
-      // let loggedInUser = stateUsers.find((item: any) => item.loginStatus === true);
-      // if (!loggedInUser) {
-      //   navigate('/logIn');
-      // }
-    }
-  }, [stateUsers, navigate]);   
+   
 
   useEffect(() => {
     dispatch(getUsers());
@@ -30,7 +22,9 @@ export default function Header() {
       navigate('/logIn');
     }
   };
-
+  const handleClick = () => {
+    
+  }
   const loggedInUser = stateUsers.find((item: any) => item.loginStatus === true);
 
   return (
@@ -39,9 +33,9 @@ export default function Header() {
         <Link to="/home">
           <img width="150px" src="https://firebasestorage.googleapis.com/v0/b/test-e7b59.appspot.com/o/Online_Academy-removebg-preview.png?alt=media&token=baa36f34-e6af-4771-b020-f383fb840ba5" alt="Online Academy" />
         </Link>
-        <Link to="">Đề thi tiểu học</Link>
-        <Link to="">Đề thi THCS</Link>
-        <Link to="">Đề Thi THPT</Link>
+        <Link onClick={handleClick} to="/details">Đề thi tiểu học</Link>
+        <Link onClick={handleClick} to="/details">Đề thi THCS</Link>
+        <Link onClick={handleClick} to="/details">Đề Thi THPT</Link>
       </div>
       
       {loggedInUser ? (

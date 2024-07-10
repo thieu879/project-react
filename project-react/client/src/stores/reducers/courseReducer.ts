@@ -49,6 +49,14 @@ export const getTests:any = createAsyncThunk(
     return response.data;
   }
 );
+export const getTest:any = createAsyncThunk(
+  "course/getTest",
+  async () => {
+    const response = await axios.get(`http://localhost:8080/test`);
+    return response.data;
+  }
+);
+
 
 export const getQuestions:any = createAsyncThunk(
   "course/getQuestions",
@@ -142,6 +150,9 @@ const courseSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getCourses.fulfilled, (state, action) => {
       state.courses = action.payload;
+    });
+    builder.addCase(getTest.fulfilled, (state, action) => {
+      state.tests = action.payload;
     });
     builder.addCase(getClasses.fulfilled, (state, action) => {
       state.classes = action.payload;

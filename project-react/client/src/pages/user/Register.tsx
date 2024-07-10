@@ -60,7 +60,7 @@ export default function Register() {
   };
 
   return (
-    <div className='bg-[url("https://img.freepik.com/premium-photo/illustration-albert-einstein_1022967-4858.jpg")] bg-cover bg-no-repeat bg-center min-h-screen flex items-center justify-center'>
+    <div className='bg-[url("https://firebasestorage.googleapis.com/v0/b/test-e7b59.appspot.com/o/R.jpg?alt=media&token=62aae0f9-4d60-4854-bee2-cb08b60a0620")] bg-cover bg-no-repeat bg-center min-h-screen flex items-center justify-center'>
       <div className="max-w-lg mx-auto p-8 bg-white bg-opacity-90 shadow-md rounded-md">
         <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Đăng Ký</h2>
         <form onSubmit={handleSubmit}>

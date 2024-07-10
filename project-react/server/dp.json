@@ -6,7 +6,7 @@
       "numberPhone": "0355483082",
       "email": "nguyenthieu11021995@gmail.com",
       "password": "12345678",
-      "loginStatus": false,
+      "loginStatus": true,
       "image": "",
       "status": true,
       "role": 1
@@ -20,17 +20,6 @@
       "image": "",
       "loginStatus": true,
       "role": 0
-    },
-    {
-      "name": "Nguyễn Gia Thiều",
-      "numberPhone": "0355483082",
-      "email": "nguyenthieu11021995@gmail.com",
-      "password": "U2FsdGVkX18cb66Wh/XajXThAVmSuStosr8kh4+Cv48=",
-      "loginStatus": false,
-      "image": "",
-      "status": true,
-      "role": 1,
-      "id": 3
     }
   ],
   "course": [
