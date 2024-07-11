@@ -34,6 +34,14 @@ export const getClasses:any = createAsyncThunk(
   }
 );
 
+export const getTests:any = createAsyncThunk(
+  "course/getTests",
+  async (courseId: number) => {
+    const response = await axios.get(`http://localhost:8080/test?courseId=${courseId}`);
+    return response.data;
+  }
+);
+
 export const getSubjects:any = createAsyncThunk(
   "course/getSubjects",
   async (classId: number) => {
@@ -41,22 +49,6 @@ export const getSubjects:any = createAsyncThunk(
     return response.data;
   }
 );
-
-export const getTests:any = createAsyncThunk(
-  "course/getTests",
-  async (subjectId: number) => {
-    const response = await axios.get(`http://localhost:8080/test?subjectId=${subjectId}`);
-    return response.data;
-  }
-);
-export const getTest:any = createAsyncThunk(
-  "course/getTest",
-  async () => {
-    const response = await axios.get(`http://localhost:8080/test`);
-    return response.data;
-  }
-);
-
 
 export const getQuestions:any = createAsyncThunk(
   "course/getQuestions",
@@ -151,17 +143,14 @@ const courseSlice = createSlice({
     builder.addCase(getCourses.fulfilled, (state, action) => {
       state.courses = action.payload;
     });
-    builder.addCase(getTest.fulfilled, (state, action) => {
-      state.tests = action.payload;
-    });
     builder.addCase(getClasses.fulfilled, (state, action) => {
       state.classes = action.payload;
     });
-    builder.addCase(getSubjects.fulfilled, (state, action) => {
-      state.subjects = action.payload;
-    });
     builder.addCase(getTests.fulfilled, (state, action) => {
       state.tests = action.payload;
+    });
+    builder.addCase(getSubjects.fulfilled, (state, action) => {
+      state.subjects = action.payload;
     });
     builder.addCase(getQuestions.fulfilled, (state, action) => {
       state.questions = action.payload;

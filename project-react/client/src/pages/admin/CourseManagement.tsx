@@ -211,7 +211,7 @@ export default function CourseManagement() {
               <tr key={course.id} className="border-b border-gray-200">
                 <td className="py-2 px-4 text-center">{index + 1}</td>
                 <td className="py-2 px-4 text-center">{course.nameCourse}</td>
-                <td className="py-2 px-4 text-center">
+                <td className="py-2 px-4 text-center flex gap-[10px] justify-center items-center">
                   <button onClick={() => handleViewCourse(course)}>
                     <i className="fa-solid fa-eye"></i>
                   </button>
@@ -231,9 +231,9 @@ export default function CourseManagement() {
             <h2 className="text-xl font-bold">Course Details</h2>
             <p><strong>Name:</strong> {selectedCourse.nameCourse}</p>
             <h3 className="text-lg font-semibold mt-4">Classes</h3>
-            <ul>
+            <tr>
               {classes && classes.map((classItem:any) => (
-                <li key={classItem.id} className="flex items-center">
+                <td key={classItem.id} className="flex items-center gap-[10px]">
                   {classItem.nameClass}
                   <button className="ml-2" onClick={() => handleViewClass(classItem)}>
                     <i className="fa-solid fa-eye"></i>
@@ -244,9 +244,9 @@ export default function CourseManagement() {
                   <button onClick={handleOpenModalSubject}>
                     <i className="fa-solid fa-circle-plus"></i>
                   </button>
-                </li>
+                </td>
               ))}
-            </ul>
+            </tr>
             {selectedClass && (
               <div className="mt-4 p-4 bg-gray-200 rounded shadow">
                 <h3 className="text-lg font-semibold">Class Details</h3>
@@ -254,7 +254,7 @@ export default function CourseManagement() {
                 <h3 className="text-lg font-semibold mt-4">Subjects</h3>
                 <ul>
                   {subjects && subjects.map((subjectItem:any) => (
-                    <li key={subjectItem.id} className="flex items-center">
+                    <li key={subjectItem.id} className="flex items-center gap-[10px]">
                       {subjectItem.nameSubject}
                       <button className="ml-2" onClick={() => handleViewSubject(subjectItem)}>
                         <i className="fa-solid fa-eye"></i>
@@ -275,7 +275,7 @@ export default function CourseManagement() {
                     <h4 className="text-lg font-semibold mt-4">Tests</h4>
                     <ul>
                       {tests && tests.map((testItem:any) => (
-                        <li key={testItem.id} className="flex items-center">
+                        <li key={testItem.id} className="flex items-center gap-[10px]">
                           {testItem.nameTest}
                           <button className="ml-2" onClick={() => handleViewTest(testItem)}>
                             <i className="fa-solid fa-eye"></i>

@@ -6,7 +6,7 @@
       "numberPhone": "0355483082",
       "email": "nguyenthieu11021995@gmail.com",
       "password": "12345678",
-      "loginStatus": true,
+      "loginStatus": false,
       "image": "",
       "status": true,
       "role": 1
@@ -20,6 +20,50 @@
       "image": "",
       "loginStatus": true,
       "role": 0
+    },
+    {
+      "name": "Nguyễn Gia Thiều",
+      "numberPhone": "0355483082",
+      "email": "nguyenthieu11021995@gmail.com",
+      "password": "U2FsdGVkX1/0DF+miQG6cDrEWkyG2A4Z8IPUaTU8CVE=",
+      "loginStatus": true,
+      "image": "",
+      "status": true,
+      "role": 1,
+      "id": 3
+    },
+    {
+      "name": "THIẾU GIA BỊ BỎ RƠI",
+      "numberPhone": "0987896421",
+      "email": "fwef@gmail.com",
+      "password": "U2FsdGVkX1840b5peSkGYUP0kIpJRktmUg9SEji95vI=",
+      "loginStatus": false,
+      "image": "",
+      "status": true,
+      "role": 1,
+      "id": 4
+    },
+    {
+      "name": "vai",
+      "numberPhone": "0355483082",
+      "email": "nguyenthieu11021995@gmail.com",
+      "password": "U2FsdGVkX1/IlNegA8WxHQGI2ps8I2ysr1ApIf0Ec80=",
+      "loginStatus": false,
+      "image": "",
+      "status": true,
+      "role": 1,
+      "id": 5
+    },
+    {
+      "name": "Nguyễn Gia Thiều",
+      "email": "nguyenthieu11021995@gmail.com",
+      "numberPhone": "0355483082",
+      "status": true,
+      "image": "123",
+      "role": 0,
+      "password": "U2FsdGVkX19/c9Ue0qrOz1DRGLgMx3AdnwlDqLg0+X8=",
+      "loginStatus": true,
+      "id": 6
     }
   ],
   "course": [

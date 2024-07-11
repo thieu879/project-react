@@ -1,30 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { getUsers, updateUserStatus } from '../../stores/reducers/managementReducer';
+import { getCourses } from '../../stores/reducers/courseReducer';
 
 export default function Header() {
-  const stateUsers = useSelector((state:any) => state.account.users);
+  const [showUserInfo, setShowUserInfo] = useState(false);
+  const stateUsers = useSelector((state: any) => state.account.users || []);
+  const courseState = useSelector((state: any) => state.course.courses || []);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-   
 
   useEffect(() => {
     dispatch(getUsers());
+    dispatch(getCourses());
   }, [dispatch]);
-  
+
   const handleLogOut = () => {
-    let updatedUsers = JSON.parse(JSON.stringify(stateUsers));
-    let userToLogout = updatedUsers.find((user: any) => user.loginStatus === true);
+    const userToLogout = stateUsers.find((user: any) => user.loginStatus === true);
     if (userToLogout) {
-      userToLogout.loginStatus = false;
-      dispatch(updateUserStatus(userToLogout));
+      dispatch(updateUserStatus({ ...userToLogout, loginStatus: false }));
       navigate('/logIn');
     }
   };
+
   const handleClick = () => {
-    
-  }
+    setShowUserInfo(!showUserInfo);
+  };
+
   const loggedInUser = stateUsers.find((item: any) => item.loginStatus === true);
 
   return (
@@ -33,23 +36,28 @@ export default function Header() {
         <Link to="/home">
           <img width="150px" src="https://firebasestorage.googleapis.com/v0/b/test-e7b59.appspot.com/o/Online_Academy-removebg-preview.png?alt=media&token=baa36f34-e6af-4771-b020-f383fb840ba5" alt="Online Academy" />
         </Link>
-        <Link onClick={handleClick} to="/details">Đề thi tiểu học</Link>
-        <Link onClick={handleClick} to="/details">Đề thi THCS</Link>
-        <Link onClick={handleClick} to="/details">Đề Thi THPT</Link>
+        {courseState.map((item: any) => (
+          <button key={item.id} onClick={() => navigate(`/details/${item.id}`)}>{item.nameCourse}</button>
+        ))}
       </div>
       
       {loggedInUser ? (
         <div>
           <ul>
-            <li>Hi {loggedInUser.name}</li>
-            <li><Link to="/infor">infor</Link></li>
-            <li><button onClick={handleLogOut}>Đăng Xuất</button></li>
+            <li className='bg-blue-300 p-[10px] h-[50px] rounded-[8px] flex justify-center items-center cursor-pointer' onClick={handleClick}>
+              Hi {loggedInUser.name} <img className='bg-blue-600 rounded-[50%]' width="30px" src="https://th.bing.com/th/id/OIP.ry0FnYNVVc6OOFGJhoPRKAHaI0?rs=1&pid=ImgDetMain" alt="Login" />
+            </li>
+            {showUserInfo && (
+              <div className='mt-2'>
+                <li><Link to="/infor">Thông tin cá nhân</Link></li>
+                <li><button onClick={handleLogOut}>Đăng Xuất</button></li>
+              </div>
+            )}
           </ul>
         </div>
       ) : (
         <Link className='bg-blue-300 w-[120px] h-[50px] rounded-[8px] flex justify-center items-center' to="/logIn">
           <p>Đăng Nhập</p>
-          <div className='ml-[3px]'><img className='bg-blue-600 rounded-[50%]' width="30px" src="https://th.bing.com/th/id/OIP.ry0FnYNVVc6OOFGJhoPRKAHaI0?rs=1&pid=ImgDetMain" alt="Login" /></div>
         </Link>
       )}
     </div>

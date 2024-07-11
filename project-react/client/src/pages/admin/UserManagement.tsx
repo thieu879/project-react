@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import SidebarAdmin from '../../components/admin/SidebarAdmin';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortUp, faSortDown, faWrench, faTrash, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -10,34 +10,63 @@ import { AppDispatch, RootState } from '../../stores/store';
 const UserManagement: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const users: Account[] = useSelector((state: RootState) => state.account.users);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
 
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
-  
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSort = () => {
+    setSortOrder((prevOrder) => (prevOrder === 'asc' ? 'desc' : 'asc'));
+  };
+
   const handleChangeStatus = (id: number, currentStatus: boolean) => {
-    const newStatus = !currentStatus; 
+    const newStatus = !currentStatus;
     dispatch(updateUserStatus({ id, status: newStatus }));
   };
+
+  const filteredUsers = users.filter((user) =>
+    user.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const sortedUsers = [...filteredUsers].sort((a, b) => {
+    const nameA = a.name.toLowerCase();
+    const nameB = b.name.toLowerCase();
+    if (sortOrder === 'asc') {
+      return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
+    } else {
+      return nameA > nameB ? -1 : nameA < nameB ? 1 : 0;
+    }
+  });
 
   return (
     <div className="flex">
       <SidebarAdmin />
       <div className="ml-6 flex-grow">
         <div className="flex items-center mb-4">
-          <input className="border-2 px-2 py-1 mr-2" type="text" placeholder="Nhập tên" />
-          <button className="bg-blue-500 text-white px-4 py-1 rounded-md">Thêm User</button>
+          <input
+            className="border-2 px-2 py-1 mr-2"
+            type="text"
+            placeholder="Nhập tên"
+            value={searchTerm}
+            onChange={handleSearch}
+          />
         </div>
         <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
           <thead className="bg-gray-800 text-white">
             <tr>
               <th className="py-2 px-4">STT</th>
               <th className="py-2 px-4">Images</th>
-              <th className="py-2 px-4 flex items-center">
+              <th className="py-2 px-4 flex items-center cursor-pointer" onClick={handleSort}>
                 <span className="mr-1">Name</span>
                 <div className="flex flex-col">
-                  <FontAwesomeIcon icon={faSortUp} className="text-gray-300 cursor-pointer" />
-                  <FontAwesomeIcon icon={faSortDown} className="text-gray-300 cursor-pointer" />
+                  <FontAwesomeIcon icon={faSortUp} className={`text-gray-300 ${sortOrder === 'asc' && 'text-black'}`} />
+                  <FontAwesomeIcon icon={faSortDown} className={`text-gray-300 ${sortOrder === 'desc' && 'text-black'}`} />
                 </div>
               </th>
               <th className="py-2 px-4">Email</th>
@@ -47,7 +76,7 @@ const UserManagement: React.FC = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {users.map((item, index) => (
+            {sortedUsers.map((item, index) => (
               <tr key={item.id} className="hover:bg-gray-100">
                 <td className="py-2 px-4">{index + 1}</td>
                 <td className="py-2 px-4"><img src={item.image} alt="User" className="h-10 w-10 rounded-full" /></td>

@@ -13,6 +13,10 @@ export default function AdminManagement() {
   const [isEditMode, setIsEditMode] = useState(false);
   const [currentAdminId, setCurrentAdminId] = useState<number | null>(null);
   const [newAdmin, setNewAdmin] = useState({ name: '', email: '', numberPhone: '', status: true, image: '', role: 0, password: '', loginStatus: false });
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
   useEffect(() => {
     dispatch(getAdmin());
@@ -51,13 +55,56 @@ export default function AdminManagement() {
     setNewAdmin({ name: '', email: '', numberPhone: '', status: true, image: '', role: 0, password: '', loginStatus: false });
   };
 
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSort = () => {
+    setSortOrder((prevOrder) => (prevOrder === 'asc' ? 'desc' : 'asc'));
+  };
+
+  const filteredAdmins = admins.filter((admin: Account) =>
+    admin.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const sortedAdmins = filteredAdmins.sort((a: Account, b: Account) => {
+    const nameA = a.name.toLowerCase();
+    const nameB = b.name.toLowerCase();
+    if (sortOrder === 'asc') {
+      return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
+    } else {
+      return nameA > nameB ? -1 : nameA < nameB ? 1 : 0;
+    }
+  });
+
+  const totalPages = Math.ceil(sortedAdmins.length / itemsPerPage);
+  const paginatedAdmins = sortedAdmins.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
   return (
     <div>
       <div className="flex">
         <SidebarAdmin />
         <div className="ml-6 flex-grow">
           <div className="flex items-center mb-4">
-            <input className="border-2 px-2 py-1 mr-2" type="text" placeholder="Nhập tên" />
+            <input
+              className="border-2 px-2 py-1 mr-2"
+              type="text"
+              placeholder="Nhập tên"
+              value={searchTerm}
+              onChange={handleSearch}
+            />
             <button className="bg-blue-500 text-white px-4 py-1 rounded-md" onClick={() => setIsModalOpen(true)}>
               Thêm Admin
             </button>
@@ -67,11 +114,11 @@ export default function AdminManagement() {
               <tr>
                 <th className="py-2 px-4">STT</th>
                 <th className="py-2 px-4">Images</th>
-                <th className="py-2 px-4 flex items-center">
+                <th className="py-2 px-4 flex items-center cursor-pointer" onClick={handleSort}>
                   <span className="mr-1">Name</span>
                   <div className="flex flex-col">
-                    <FontAwesomeIcon icon={faSortUp} className="text-gray-300 cursor-pointer" />
-                    <FontAwesomeIcon icon={faSortDown} className="text-gray-300 cursor-pointer" />
+                    <FontAwesomeIcon icon={faSortUp} className={`text-gray-300 ${sortOrder === 'asc' && 'text-black'}`} />
+                    <FontAwesomeIcon icon={faSortDown} className={`text-gray-300 ${sortOrder === 'desc' && 'text-black'}`} />
                   </div>
                 </th>
                 <th className="py-2 px-4">Email</th>
@@ -81,24 +128,24 @@ export default function AdminManagement() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {admins.map((item: Account, index: number) => (
+              {paginatedAdmins.map((item: Account, index: number) => (
                 <tr key={index} className="hover:bg-gray-100">
-                  <td className="py-2 px-4">{index + 1}</td>
+                  <td className="py-2 px-4">{(currentPage - 1) * itemsPerPage + index + 1}</td>
                   <td className="py-2 px-4">
                     <img src={item.image} alt={item.name} className="h-10 w-10 rounded-full" />
                   </td>
                   <td className="py-2 px-4">{item.name}</td>
                   <td className="py-2 px-4">{item.email}</td>
                   <td className="py-2 px-4">{item.numberPhone}</td>
-                  <td className="py-2 px-4">
+                  <td className="py-2 px-4 flex justify-center items-center mt-[10px]">
                     <button onClick={() => handleChangeAdminStatus(item.id, item.loginStatus)}>
-                      {item.loginStatus ? "Active" : "Inactive"}
+                      {item.loginStatus ? <i className="fa-solid fa-lock-open"></i> : <i className="fa-solid fa-lock"></i>}
                     </button>
                   </td>
                   <td className="py-2 px-4 text-center">
                     <button className="mr-2" onClick={() => handleEditAdmin(item)}>
                       <FontAwesomeIcon icon={faWrench} />
-                    </button>
+                    </button>=
                     <button onClick={() => handleDeleteAdmin(item.id)}>
                       <FontAwesomeIcon icon={faTrash} />
                     </button>
@@ -108,13 +155,20 @@ export default function AdminManagement() {
             </tbody>
           </table>
           <div className="flex justify-between mt-4">
-            <div className="text-sm text-gray-500">Hiển thị 5 đối tượng trên 25 đối tượng</div>
+            <div className="text-sm text-gray-500">Hiển thị {itemsPerPage} đối tượng trên {admins.length} đối tượng</div>
             <div className="flex gap-2">
-              <button className="text-gray-500 hover:text-gray-700">
+              <button
+                className="text-gray-500 hover:text-gray-700"
+                onClick={handlePreviousPage}
+                disabled={currentPage === 1}
+              >
                 <FontAwesomeIcon icon={faArrowLeft} />
               </button>
-              <button className="text-gray-500 hover:text-gray-700">...</button>
-              <button className="text-gray-500 hover:text-gray-700">
+              <button
+                className="text-gray-500 hover:text-gray-700"
+                onClick={handleNextPage}
+                disabled={currentPage === totalPages}
+              >
                 <FontAwesomeIcon icon={faArrowRight} />
               </button>
             </div>

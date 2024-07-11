@@ -8,7 +8,8 @@ import Home from './pages/user/Home/Home';
 import Infor from './pages/user/Infor';
 import CourseManagement from './pages/admin/CourseManagement';
 import Details from './pages/user/details/Details';
-// const isAdmin = ;p
+import Exam from './pages/user/exam/Exam';
+
 export default function App() {
   return (
     <div>
@@ -19,9 +20,10 @@ export default function App() {
         <Route path='/' element={<Home />} />
         <Route path='/logIn' element={<LogIn />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/infor' element={<Infor></Infor>}></Route>
-        <Route path='/courseManagement' element={<CourseManagement></CourseManagement>}></Route>
-        <Route path='/details' element={<Details></Details>}></Route>
+        <Route path='/infor' element={<Infor />} />
+        <Route path='/courseManagement' element={<CourseManagement />} />
+        <Route path='/details/:courseId' element={<Details />} />
+        <Route path='exam' element={<Exam />}></Route>
       </Routes>
     </div>
   );
