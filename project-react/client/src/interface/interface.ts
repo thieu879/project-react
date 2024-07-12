@@ -44,6 +44,7 @@ export interface Test {
 }
 
 export interface Question {
+    option: any;
     id: number,
     testId: number,
     question: string,
