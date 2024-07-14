@@ -20,6 +20,13 @@ export interface LoginPayload {
     password: string;
 }
 
+export interface UserAnswer{
+    testId(testId: any): import("react").ReactNode;
+    id: number,
+    userId: number,
+    examId: number,
+    score: string
+}
 export interface Course {
     id: number,
     nameCourse: string

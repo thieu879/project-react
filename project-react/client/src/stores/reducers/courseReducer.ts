@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
-import { Class, Course, Subject, Test, Question } from "../../interface/interface";
+import { Class, Course, Subject, Test, Question, UserAnswer } from "../../interface/interface";
 
 interface CourseState {
   courses: Course[];
@@ -8,6 +8,7 @@ interface CourseState {
   subjects: Subject[];
   tests: Test[];
   questions: Question[];
+  userAnswers: UserAnswer[];
 }
 
 const initialState: CourseState = {
@@ -16,6 +17,7 @@ const initialState: CourseState = {
   subjects: [],
   tests: [],
   questions: [],
+  userAnswers: [],
 };
 
 export const getCourses:any = createAsyncThunk(
@@ -36,8 +38,8 @@ export const getClasses:any = createAsyncThunk(
 
 export const getTests:any = createAsyncThunk(
   "course/getTests",
-  async (courseId: number) => {
-    const response = await axios.get(`http://localhost:8080/test?courseId=${courseId}`);
+  async (subjectId: number) => {
+    const response = await axios.get(`http://localhost:8080/test?subjectId=${subjectId}`);    
     return response.data;
   }
 );
@@ -134,7 +136,18 @@ export const addQuestion:any = createAsyncThunk(
     return response.data;
   }
 );
-
+export const saveUserAnswers: any = createAsyncThunk(
+  "course/saveUserAnswers",
+  async (userAnswer: UserAnswer) => {
+    const response = await axios.post("http://localhost:8080/userAnswer", userAnswer);
+    return response.data;
+  }
+);
+export const getUserAnswers: any = createAsyncThunk(
+  "course/getUserAnswers",
+  async (userId: number) => { const response = await axios.get(`http://localhost:8080/userAnswer?userId=${userId}`);
+  return response.data;
+});
 const courseSlice = createSlice({
   name: "course",
   initialState,
@@ -184,6 +197,12 @@ const courseSlice = createSlice({
     });
     builder.addCase(addQuestion.fulfilled, (state, action) => {
       state.questions.push(action.payload);
+    });
+    builder.addCase(saveUserAnswers.fulfilled, (state, action) => {
+      state.userAnswers.push(action.payload);
+    });
+    builder.addCase(getUserAnswers.fulfilled, (state, action) => {
+      state.userAnswers = action.payload;
     });
   },
 });

@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 import {
   getUsers,
+  updateUserLoginStatus,
   updateUserStatus,
 } from "../../stores/reducers/managementReducer";
 import { getCourses } from "../../stores/reducers/courseReducer";
+import { RootState } from "../../stores/store";
+import { Account, Course } from "../../interface/interface";
 
 export default function Header() {
   const [showUserInfo, setShowUserInfo] = useState(false);
-  const stateUsers = useSelector((state: any) => state.account.users || []);
-  const courseState = useSelector((state: any) => state.course.courses || []);
+  const stateUsers = useSelector(
+    (state: RootState) => state.account.users || []
+  );
+  const courseState = useSelector(
+    (state: RootState) => state.course.courses || []
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -20,13 +28,25 @@ export default function Header() {
   }, [dispatch]);
 
   const handleLogOut = () => {
-    const userToLogout = stateUsers.find(
-      (user: any) => user.loginStatus === true
-    );
-    if (userToLogout) {
-      dispatch(updateUserStatus({ ...userToLogout, loginStatus: false }));
-      navigate("/logIn");
-    }
+    Swal.fire({
+      title: 'Bạn có chắc muốn đăng xuất?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Đồng ý',
+      cancelButtonText: 'Hủy bỏ',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("userId");
+        localStorage.removeItem("userStatus");
+        const userToLogout = stateUsers.find(
+          (user: Account) => user.loginStatus === true
+        );
+        if (userToLogout) {
+          dispatch(updateUserStatus({ ...userToLogout, loginStatus: false }));
+          navigate("/logIn");
+        }
+      }
+    });
   };
 
   const handleClick = () => {
@@ -38,7 +58,7 @@ export default function Header() {
   };
 
   const loggedInUser = stateUsers.find(
-    (item: any) => item.loginStatus === true
+    (user: Account) => user.loginStatus === true
   );
 
   return (
@@ -51,32 +71,34 @@ export default function Header() {
             alt="Online Academy"
           />
         </Link>
-        {courseState.map((item: any) => (
-          <button key={item.id} onClick={() => handleCourseClick(item.id)}>
-            {item.nameCourse}
+        {courseState.map((course: Course) => (
+          <button key={course.id} onClick={() => handleCourseClick(course.id)}>
+            {course.nameCourse}
           </button>
         ))}
       </div>
 
       {loggedInUser ? (
-        <div>
+        <div className="relative">
           <ul>
-            <li
-              className="bg-blue-300 p-[10px] h-[50px] rounded-[8px] flex justify-center items-center cursor-pointer"
+            <div
+              className="flex items-center gap-2 cursor-pointer"
               onClick={handleClick}
             >
-              Hi {loggedInUser.name}{" "}
+              <span className="font-medium">Chào {loggedInUser.name}</span>
               <img
-                className="bg-blue-600 rounded-[50%]"
-                width="30px"
-                src="https://th.bing.com/th/id/OIP.ry0FnYNVVc6OOFGJhoPRKAHaI0?rs=1&pid=ImgDetMain"
-                alt="Login"
+                className="w-8 h-8 rounded-full"
+                src={loggedInUser.image}
+                alt="User Avatar"
               />
-            </li>
+            </div>
             {showUserInfo && (
-              <div className="mt-2">
+              <div className="mt-2 absolute z-50">
                 <li>
                   <Link to="/infor">Thông tin cá nhân</Link>
+                </li>
+                <li>
+                  <Link to="/history">Lịch Sử Thi</Link>
                 </li>
                 <li>
                   <button onClick={handleLogOut}>Đăng Xuất</button>

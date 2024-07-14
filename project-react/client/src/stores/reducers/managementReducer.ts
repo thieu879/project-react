@@ -71,6 +71,13 @@ export const updateAdminStatus:any = createAsyncThunk(
   }
 );
 
+export const updateUserLoginStatus:any = createAsyncThunk(
+  "admin/updateUserStatus",
+  async ({ id, status }: { id: number, status: boolean }) => {
+    const response = await axios.patch<Account>(`http://localhost:8080/account/${id}`, { status });
+    return response.data;
+  }
+);
 export const updateUserStatus:any = createAsyncThunk(
   "admin/updateUserStatus",
   async ({ id, loginStatus }: { id: number, loginStatus: boolean }) => {
@@ -105,6 +112,14 @@ export const deleteAdmin:any = createAsyncThunk(
   }
 );
 
+export const updateCurrentUserAvatar:any = createAsyncThunk(
+  "admin/updateCurrentUserAvatar",
+  async (updatedUser: Account) => {
+    const response = await axios.put<Account>(`http://localhost:8080/account/${updatedUser.id}`, updatedUser);
+    return response.data;
+  }
+);
+
 const adminSlice = createSlice({
   name: "admin",
   initialState,
@@ -134,7 +149,7 @@ const adminSlice = createSlice({
     builder.addCase(updateUserStatus.fulfilled, (state, action) => {
       const userIndex = state.users.findIndex((user) => user.id === action.payload.id);
       if (userIndex !== -1) {
-        state.users[userIndex].loginStatus = action.payload.loginStatus;
+        state.users[userIndex].status = action.payload.status;
       }
     });
     builder.addCase(addAdmin.fulfilled, (state, action) => {
@@ -148,6 +163,12 @@ const adminSlice = createSlice({
     });
     builder.addCase(deleteAdmin.fulfilled, (state, action) => {
       state.admins = state.admins.filter((admin) => admin.id !== action.payload);
+    });
+    builder.addCase(updateCurrentUserAvatar.fulfilled, (state, action) => {
+      const userIndex = state.users.findIndex((user) => user.id === action.payload.id);
+      if (userIndex !== -1) {
+        state.users[userIndex] = action.payload;
+      }
     });
   },
 });

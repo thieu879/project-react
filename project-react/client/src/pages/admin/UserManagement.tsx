@@ -1,17 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import SidebarAdmin from '../../components/admin/SidebarAdmin';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSortUp, faSortDown, faWrench, faTrash, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch, useSelector } from 'react-redux';
-import { Account } from '../../interface/interface';
-import { getUsers, updateUserStatus } from '../../stores/reducers/managementReducer';
-import { AppDispatch, RootState } from '../../stores/store';
+import React, { useEffect, useState } from "react";
+import SidebarAdmin from "../../components/admin/SidebarAdmin";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSortUp,
+  faSortDown,
+  faWrench,
+  faTrash,
+  faArrowLeft,
+  faArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { Account } from "../../interface/interface";
+import {
+  getUsers,
+  updateUserLoginStatus,
+} from "../../stores/reducers/managementReducer";
+import { AppDispatch, RootState } from "../../stores/store";
 
 const UserManagement: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const users: Account[] = useSelector((state: RootState) => state.account.users);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
+  const [currentPage, setCurrentPage] = useState(1);
+  const usersPerPage = 2;
 
   useEffect(() => {
     dispatch(getUsers());
@@ -22,12 +34,12 @@ const UserManagement: React.FC = () => {
   };
 
   const handleSort = () => {
-    setSortOrder((prevOrder) => (prevOrder === 'asc' ? 'desc' : 'asc'));
+    setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
   };
 
   const handleChangeStatus = (id: number, currentStatus: boolean) => {
     const newStatus = !currentStatus;
-    dispatch(updateUserStatus({ id, status: newStatus }));
+    dispatch(updateUserLoginStatus({ id, status: newStatus }));
   };
 
   const filteredUsers = users.filter((user) =>
@@ -37,12 +49,26 @@ const UserManagement: React.FC = () => {
   const sortedUsers = [...filteredUsers].sort((a, b) => {
     const nameA = a.name.toLowerCase();
     const nameB = b.name.toLowerCase();
-    if (sortOrder === 'asc') {
+    if (sortOrder === "asc") {
       return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
     } else {
       return nameA > nameB ? -1 : nameA < nameB ? 1 : 0;
     }
   });
+
+  const indexOfLastUser = currentPage * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentUsers = sortedUsers.slice(indexOfFirstUser, indexOfLastUser);
+
+  const totalPages = Math.ceil(sortedUsers.length / usersPerPage);
+
+  const handlePreviousPage = () => {
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+  };
 
   return (
     <div className="flex">
@@ -61,51 +87,96 @@ const UserManagement: React.FC = () => {
           <thead className="bg-gray-800 text-white">
             <tr>
               <th className="py-2 px-4">STT</th>
-              <th className="py-2 px-4">Images</th>
-              <th className="py-2 px-4 flex items-center cursor-pointer" onClick={handleSort}>
-                <span className="mr-1">Name</span>
+              <th className="py-2 px-4">Ảnh</th>
+              <th
+                className="py-2 px-4 flex items-center cursor-pointer"
+                onClick={handleSort}
+              >
+                <span className="mr-1">Tên</span>
                 <div className="flex flex-col">
-                  <FontAwesomeIcon icon={faSortUp} className={`text-gray-300 ${sortOrder === 'asc' && 'text-black'}`} />
-                  <FontAwesomeIcon icon={faSortDown} className={`text-gray-300 ${sortOrder === 'desc' && 'text-black'}`} />
+                  <FontAwesomeIcon
+                    icon={faSortUp}
+                    className={`text-gray-300 ${
+                      sortOrder === "asc" && "text-black"
+                    }`}
+                  />
+                  <FontAwesomeIcon
+                    icon={faSortDown}
+                    className={`text-gray-300 ${
+                      sortOrder === "desc" && "text-black"
+                    }`}
+                  />
                 </div>
               </th>
               <th className="py-2 px-4">Email</th>
-              <th className="py-2 px-4">Phone Number</th>
-              <th className="py-2 px-4">Status</th>
-              <th className="py-2 px-4">Action</th>
+              <th className="py-2 px-4">Số Điện Thoại</th>
+              <th className="py-2 px-4">Trạng Thái</th>
+              <th className="py-2 px-4">Hành Động</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {sortedUsers.map((item, index) => (
+            {currentUsers.map((item, index) => (
               <tr key={item.id} className="hover:bg-gray-100">
-                <td className="py-2 px-4">{index + 1}</td>
-                <td className="py-2 px-4"><img src={item.image} alt="User" className="h-10 w-10 rounded-full" /></td>
+                <td className="py-2 px-4">{indexOfFirstUser + index + 1}</td>
+                <td className="py-2 px-4">
+                  <img
+                    src={item.image}
+                    alt="User"
+                    className="h-10 w-10 rounded-full"
+                  />
+                </td>
                 <td className="py-2 px-4">{item.name}</td>
                 <td className="py-2 px-4">{item.email}</td>
                 <td className="py-2 px-4">{item.numberPhone}</td>
-                <td className="py-2 px-4">
-                  <button onClick={() => handleChangeStatus(item.id, item.status)}>
-                    {item.status ? "Active" : "Inactive"}
+                <td className="py-2 px-4 flex justify-center items-center mt-[10px]">
+                  <button
+                    onClick={() => handleChangeStatus(item.id, item.status)}
+                  >
+                    {item.status ? (
+                      <i className="fa-solid fa-lock-open"></i>
+                    ) : (
+                      <i className="fa-solid fa-lock"></i>
+                    )}
                   </button>
                 </td>
                 <td className="py-2 px-4 text-center">
-                  <button className="mr-2"><FontAwesomeIcon icon={faWrench} /></button>
-                  <button><FontAwesomeIcon icon={faTrash} /></button>
+                  <button className="mr-2">
+                    <FontAwesomeIcon icon={faWrench} />
+                  </button>
+                  <button>
+                    <FontAwesomeIcon icon={faTrash} />
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
         <div className="flex justify-between mt-4">
-          <div className="text-sm text-gray-500">Hiển thị 5 đối tượng trên 25 đối tượng</div>
+          <div className="text-sm text-gray-500">
+            Hiển thị {currentUsers.length} đối tượng trên {sortedUsers.length}{" "}
+            đối tượng
+          </div>
           <div className="flex gap-2">
-            <button className="text-gray-500 hover:text-gray-700"><FontAwesomeIcon icon={faArrowLeft} /></button>
-            <button className="text-gray-500 hover:text-gray-700">...</button>
-            <button className="text-gray-500 hover:text-gray-700"><FontAwesomeIcon icon={faArrowRight} /></button>
+            <button
+              className="text-gray-500 hover:text-gray-700"
+              onClick={handlePreviousPage}
+              disabled={currentPage === 1}
+            >
+              <FontAwesomeIcon icon={faArrowLeft} />
+            </button>
+            <span>
+              {currentPage} / {totalPages}
+            </span>
+            <button
+              className="text-gray-500 hover:text-gray-700"
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+            >
+              <FontAwesomeIcon icon={faArrowRight} />
+            </button>
           </div>
         </div>
       </div>
-      {/* modal */}
       <div></div>
     </div>
   );
