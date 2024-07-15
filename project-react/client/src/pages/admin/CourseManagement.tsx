@@ -2,24 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SidebarAdmin from '../../components/admin/SidebarAdmin';
 import { RootState } from '../../stores/store';
-import {
-  getCourses,
-  getClasses,
-  getSubjects,
-  getTests,
-  getQuestions,
-  deleteCourse,
-  deleteClass,
-  deleteSubject,
-  deleteTest,
-  deleteQuestion,
-  addCourse,
-  addClass,
-  addSubject,
-  addTest,
-  addQuestion 
-} from '../../stores/reducers/courseReducer';
 import Swal from "sweetalert2";
+import { addClass, addCourse, addQuestion, addSubject, addTest, deleteClass, deleteCourse, deleteQuestion, deleteSubject, deleteTest, getClasses, getCourses, getQuestions, getSubjects, getTests } from '../../service/course.service';
 
 export default function CourseManagement() {
   const dispatch = useDispatch();
@@ -209,8 +193,8 @@ export default function CourseManagement() {
   };
 
   return (
-    <div className="flex">
-      <SidebarAdmin />
+    <>
+      {/* <SidebarAdmin /> */}
       <div className="flex-grow p-6">
         <button
           onClick={handleOpenModalCourse}
@@ -614,7 +598,7 @@ export default function CourseManagement() {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 

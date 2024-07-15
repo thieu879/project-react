@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import CryptoJS from "crypto-js";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -22,38 +22,59 @@ export default function Register() {
     setFormData({ ...formData, [name]: val });
   };
 
+  const checkEmailExists = async (email: string) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/account?email=${email}`
+      );
+      return response.data.length > 0; // Assuming the API returns an array of users
+    } catch (error) {
+      console.error("Error checking email:", error);
+      return false;
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
       if (!formData.termsChecked) {
         Swal.fire({
-          icon: 'error',
-          text: 'Bạn phải đồng ý với điều khoản trước khi đăng ký.'
+          icon: "error",
+          text: "Bạn phải đồng ý với điều khoản trước khi đăng ký.",
         });
         return;
       }
 
       if (formData.password !== formData.confirmPassword) {
         Swal.fire({
-          icon: 'error',
-          text: 'Mật khẩu không khớp. Vui lòng kiểm tra lại.'
+          icon: "error",
+          text: "Mật khẩu không khớp. Vui lòng kiểm tra lại.",
         });
         return;
       }
 
       if (!validatePhone(formData.phone)) {
         Swal.fire({
-          icon: 'error',
-          text: 'Số điện thoại không hợp lệ.'
+          icon: "error",
+          text: "Số điện thoại không hợp lệ.",
         });
         return;
       }
 
       if (!validateEmail(formData.email)) {
         Swal.fire({
-          icon: 'error',
-          text: 'Email không hợp lệ.'
+          icon: "error",
+          text: "Email không hợp lệ.",
+        });
+        return;
+      }
+
+      const emailExists = await checkEmailExists(formData.email);
+      if (emailExists) {
+        Swal.fire({
+          icon: "error",
+          text: "Email đã tồn tại. Vui lòng sử dụng email khác.",
         });
         return;
       }
@@ -76,16 +97,16 @@ export default function Register() {
 
       console.log("Registration successful:", response.data);
       Swal.fire({
-        icon: 'success',
-        text: 'Đăng ký thành công!'
+        icon: "success",
+        text: "Đăng ký thành công!",
       }).then(() => {
         navigate("/logIn");
       });
     } catch (error) {
       console.error("Registration failed:", error);
       Swal.fire({
-        icon: 'error',
-        text: 'Đăng ký thất bại. Vui lòng thử lại.'
+        icon: "error",
+        text: "Đăng ký thất bại. Vui lòng thử lại.",
       });
     }
   };

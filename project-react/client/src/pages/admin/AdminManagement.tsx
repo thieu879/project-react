@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import SidebarAdmin from "../../components/admin/SidebarAdmin";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeft,
@@ -10,15 +9,9 @@ import {
   faTrash,
   faWrench,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  getAdmin,
-  updateAdminStatus,
-  addAdmin,
-  updateAdmin,
-  deleteAdmin,
-} from "../../stores/reducers/managementReducer";
 import { Account } from "../../interface/interface";
 import Swal from "sweetalert2";
+import { addAdmin, deleteAdmin, getAdmin, updateAdmin, updateAdminStatus } from "../../service/management.service";
 
 export default function AdminManagement() {
   const dispatch = useDispatch();
@@ -64,17 +57,17 @@ export default function AdminManagement() {
 
   const handleDeleteAdmin = (id: number) => {
     Swal.fire({
-      title: "Are you sure?",
-      text: "You will not be able to recover this admin!",
+      title: "Bạn có chắc không?",
+      text: "Bạn sẽ không thể khôi phục quản trị viên này!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Có, xóa nó đi!",
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch(deleteAdmin(id));
-        Swal.fire("Deleted!", "The admin has been deleted.", "success");
+        Swal.fire("Đã xóa!", "Quản trị viên đã bị xóa.", "success");
       }
     });
   };
@@ -142,9 +135,9 @@ export default function AdminManagement() {
   };
 
   return (
-    <div>
-      <div className="flex">
-        <SidebarAdmin />
+    <>
+      <div>
+        {/* <SidebarAdmin /> */}
         <div className="ml-6 flex-grow">
           <div className="flex items-center mb-4">
             <input
@@ -346,6 +339,6 @@ export default function AdminManagement() {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }

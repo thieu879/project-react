@@ -3,14 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./details.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getCourses,
-  getClasses,
-  getSubjects,
-  getTests,
-  getQuestions,
-  saveUserAnswers,
-} from "../../../stores/reducers/courseReducer";
 import Header from "../../../components/user/Header";
 import Footer from "../../../components/user/Footer";
 import { RootState } from "../../../stores/store";
@@ -22,6 +14,7 @@ import {
   Test,
   UserAnswer,
 } from "../../../interface/interface";
+import { getClasses, getCourses, getQuestions, getSubjects, getTests, saveUserAnswers } from "../../../service/course.service";
 
 export default function Details() {
   const { courseId } = useParams<{ courseId: string }>();

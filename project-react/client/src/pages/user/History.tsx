@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getQuestions, getUserAnswers } from "../stores/reducers/courseReducer";
-import { UserAnswer } from "../interface/interface";
-import Header from "../components/user/Header";
-import Footer from "../components/user/Footer";
+import { getUserAnswers } from "../../service/course.service";
+import Header from "../../components/user/Header";
+import { UserAnswer } from "../../interface/interface";
+import Footer from "../../components/user/Footer";
 
 export default function History() {
   const dispatch = useDispatch();

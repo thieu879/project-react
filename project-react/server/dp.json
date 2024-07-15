@@ -1,17 +1,6 @@
 {
   "account": [
     {
-      "id": 1,
-      "name": "thieunguyen879",
-      "numberPhone": "0355483082",
-      "email": "nguyenthieu11021995@gmail.com",
-      "password": "12345678",
-      "loginStatus": false,
-      "image": "",
-      "status": true,
-      "role": 1
-    },
-    {
       "id": 2,
       "name": "admin",
       "numberPhone": "0355483082",
@@ -23,47 +12,25 @@
     },
     {
       "name": "Nguyễn Gia Thiều",
-      "numberPhone": "0355483082",
       "email": "nguyenthieu11021995@gmail.com",
-      "password": "U2FsdGVkX1+HKN6CF3ErECq13UIDgwynhqglp0w7x7o=",
-      "loginStatus": true,
-      "image": "https://firebasestorage.googleapis.com/v0/b/project-3695d.appspot.com/o/avatars%2F3?alt=media&token=8fc02b5c-3d13-4794-a8f6-21e826981ee1",
+      "numberPhone": "0355483082",
       "status": true,
-      "role": 1,
-      "id": 3
-    },
-    {
-      "name": "THIẾU GIA BỊ BỎ RƠI",
-      "numberPhone": "0987896421",
-      "email": "fwef@gmail.com",
-      "password": "U2FsdGVkX1840b5peSkGYUP0kIpJRktmUg9SEji95vI=",
-      "loginStatus": false,
       "image": "",
-      "status": true,
-      "role": 1,
-      "id": 4
-    },
-    {
-      "name": "vai",
-      "numberPhone": "0355483082",
-      "email": "nguyenthieu11021995@gmail.com",
-      "password": "U2FsdGVkX1/IlNegA8WxHQGI2ps8I2ysr1ApIf0Ec80=",
-      "loginStatus": false,
-      "image": "",
-      "status": true,
-      "role": 1,
-      "id": 5
-    },
-    {
-      "name": "Nguyễn Gia Thiều",
-      "email": "nguyenthieu11021995@gmail.com",
-      "numberPhone": "0355483082",
-      "status": true,
-      "image": "123",
       "role": 0,
       "password": "U2FsdGVkX19/c9Ue0qrOz1DRGLgMx3AdnwlDqLg0+X8=",
       "loginStatus": true,
       "id": 6
+    },
+    {
+      "name": "Nguyễn Gia Thiều",
+      "numberPhone": "0355483082",
+      "email": "nguyenthieu1102@gmail.com",
+      "password": "U2FsdGVkX19c2pdAesaB6lkjH0wwiorBLC+eslq8gqc=",
+      "loginStatus": true,
+      "image": "",
+      "status": true,
+      "role": 1,
+      "id": 7
     }
   ],
   "course": [
@@ -2134,6 +2101,24 @@
       "userId": "3",
       "examId": 1,
       "score": "9.09"
+    },
+    {
+      "id": 2,
+      "userId": "3",
+      "examId": 1,
+      "score": "9.09"
+    },
+    {
+      "id": 3,
+      "userId": "7",
+      "examId": 1,
+      "score": "9.09"
+    },
+    {
+      "id": 4,
+      "userId": "7",
+      "examId": 1,
+      "score": "0.00"
     }
   ]
 }

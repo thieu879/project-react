@@ -1,20 +1,6 @@
-
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from 'axios';
-import CryptoJS from 'crypto-js';
-import { LoginPayload, Account, RoleType } from "../../interface/interface";
-
-interface AdminState {
-  admins: Account[];
-  loggedInAdmin: Account | null;
-  users: Account[];
-}
-
-const initialState: AdminState = {
-  admins: [],
-  loggedInAdmin: null,
-  users: [],
-};
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { Account, LoginPayload, RoleType } from "../interface/interface";
+import axios from "axios";
 
 export const getAdmin:any = createAsyncThunk(
   "admin/getAdmin",
@@ -51,6 +37,8 @@ export const loginAdmin:any = createAsyncThunk(
 export const loginUser:any = createAsyncThunk(
   "admin/loginUser",
   async ({ email, password }: LoginPayload) => {
+    console.log(password);
+    console.log(email);
     const response = await axios.get<Account[]>("http://localhost:8080/account");
     const user = response.data.find((user) => {
       const decryptedPassword = CryptoJS.AES.decrypt(user.password, 'secret key 123').toString(CryptoJS.enc.Utf8);
@@ -120,58 +108,3 @@ export const updateCurrentUserAvatar:any = createAsyncThunk(
     return response.data;
   }
 );
-
-const adminSlice = createSlice({
-  name: "admin",
-  initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(getAdmin.fulfilled, (state, action) => {
-      state.admins = action.payload;
-    });
-    builder.addCase(getUsers.fulfilled, (state, action) => {
-      state.users = action.payload;
-    });
-    builder.addCase(loginAdmin.fulfilled, (state, action) => {
-      state.loggedInAdmin = action.payload;
-    });
-    builder.addCase(loginUser.fulfilled, (state, action) => {
-      const userIndex = state.users.findIndex((user) => user.id === action.payload.id);
-      if (userIndex !== -1) {
-        state.users[userIndex] = action.payload;
-      }
-    });
-    builder.addCase(updateAdminStatus.fulfilled, (state, action) => {
-      const adminIndex = state.admins.findIndex((admin) => admin.id === action.payload.id);
-      if (adminIndex !== -1) {
-        state.admins[adminIndex].loginStatus = action.payload.loginStatus;
-      }
-    });
-    builder.addCase(updateUserStatus.fulfilled, (state, action) => {
-      const userIndex = state.users.findIndex((user) => user.id === action.payload.id);
-      if (userIndex !== -1) {
-        state.users[userIndex].status = action.payload.status;
-      }
-    });
-    builder.addCase(addAdmin.fulfilled, (state, action) => {
-      state.admins.push(action.payload);
-    });
-    builder.addCase(updateAdmin.fulfilled, (state, action) => {
-      const index = state.admins.findIndex((admin) => admin.id === action.payload.id);
-      if (index !== -1) {
-        state.admins[index] = action.payload;
-      }
-    });
-    builder.addCase(deleteAdmin.fulfilled, (state, action) => {
-      state.admins = state.admins.filter((admin) => admin.id !== action.payload);
-    });
-    builder.addCase(updateCurrentUserAvatar.fulfilled, (state, action) => {
-      const userIndex = state.users.findIndex((user) => user.id === action.payload.id);
-      if (userIndex !== -1) {
-        state.users[userIndex] = action.payload;
-      }
-    });
-  },
-});
-
-export default adminSlice.reducer;

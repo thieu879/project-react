@@ -2,14 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
-import {
-  getUsers,
-  updateUserLoginStatus,
-  updateUserStatus,
-} from "../../stores/reducers/managementReducer";
-import { getCourses } from "../../stores/reducers/courseReducer";
 import { RootState } from "../../stores/store";
 import { Account, Course } from "../../interface/interface";
+import { getUsers, updateUserStatus } from "../../service/management.service";
+import { getCourses } from "../../service/course.service";
 
 export default function Header() {
   const [showUserInfo, setShowUserInfo] = useState(false);

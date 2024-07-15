@@ -16,7 +16,7 @@ export default function LogIn() {
   const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
 
-  const handleSubmit = async (e:any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
       if (isAdmin) {
@@ -25,7 +25,7 @@ export default function LogIn() {
           await dispatch(
             updateAdminStatus({ id: admin.payload.id, loginStatus: true })
           );
-          navigate("/adminManagement");
+          navigate("/admin");
         } else {
           showErrorAlert("Email hoặc mật khẩu không hợp lệ");
         }
@@ -48,7 +48,7 @@ export default function LogIn() {
     }
   };
 
-  const showErrorAlert = (message:any) => {
+  const showErrorAlert = (message: any) => {
     Swal.fire({
       icon: "error",
       title: "Ôi Không...",

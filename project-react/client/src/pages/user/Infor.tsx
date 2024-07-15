@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import {
-  getUsers,
-  updateCurrentUserAvatar,
-} from "../../stores/reducers/managementReducer";
+import Swal from "sweetalert2"; // import SweetAlert
 import {
   ref,
   uploadBytesResumable,
@@ -14,6 +11,12 @@ import {
 import { storage } from "../../config/firebase";
 import { Account } from "../../interface/interface";
 import CryptoJS from "crypto-js";
+import {
+  getUsers,
+  updateCurrentUserAvatar,
+} from "../../service/management.service";
+import Header from "../../components/user/Header";
+import Footer from "../../components/user/Footer";
 
 export default function Infor() {
   const [img, setImg] = useState<File | null>(null);
@@ -39,7 +42,11 @@ export default function Infor() {
 
   const handleUploadAvatar = async (currentUser: Account) => {
     if (!img) {
-      alert("Vui lòng chọn một tập tin hình ảnh");
+      Swal.fire({
+        icon: "error",
+        title: "Lỗi",
+        text: "Vui lòng chọn một tập tin hình ảnh",
+      });
       return;
     }
 
@@ -55,7 +62,11 @@ export default function Infor() {
       },
       (error) => {
         console.error("Lỗi tải hình đại diện lên:", error);
-        alert("Error uploading avatar");
+        Swal.fire({
+          icon: "error",
+          title: "Lỗi",
+          text: "Lỗi tải lên hình đại diện",
+        });
       },
       async () => {
         try {
@@ -76,10 +87,18 @@ export default function Infor() {
 
           dispatch(updateCurrentUserAvatar(updatedUser));
           setImgUrl(downloadURL);
-          alert("Avatar updated successfully");
+          Swal.fire({
+            icon: "success",
+            title: "Thành công",
+            text: "Cập nhật ảnh đại diện thành công",
+          });
         } catch (error) {
           console.error("Error updating user:", error);
-          alert("Error updating avatar");
+          Swal.fire({
+            icon: "error",
+            title: "Lỗi",
+            text: "Lỗi cập nhật ảnh đại diện",
+          });
         }
       }
     );
@@ -98,7 +117,11 @@ export default function Infor() {
 
   const handleSaveInfo = async (currentUser: Account) => {
     if (newPassword && newPassword !== confirmNewPassword) {
-      alert("New password and confirmation do not match");
+      Swal.fire({
+        icon: "error",
+        title: "Lỗi",
+        text: "Mật khẩu mới và xác nhận không khớp",
+      });
       return;
     }
 
@@ -108,7 +131,11 @@ export default function Infor() {
         oldPassword
       );
       if (!isOldPasswordCorrect) {
-        alert("Old password is incorrect");
+        Swal.fire({
+          icon: "error",
+          title: "Lỗi",
+          text: "Mật khẩu cũ không đúng",
+        });
         return;
       }
     }
@@ -131,128 +158,140 @@ export default function Infor() {
         updatedUser
       );
       dispatch(updateCurrentUserAvatar(updatedUser));
-      alert("Information updated successfully");
+      Swal.fire({
+        icon: "success",
+        title: "Thành công",
+        text: "Cập nhật thông tin thành công",
+      });
     } catch (error) {
       console.error("Error updating user:", error);
-      alert("Error updating information");
+      Swal.fire({
+        icon: "error",
+        title: "Lỗi",
+        text: "Lỗi cập nhật thông tin",
+      });
     }
   };
 
   return (
-    <div className="w-full h-screen flex justify-center items-center bg-gray-100">
-      {users
-        .filter((user: any) => user.loginStatus)
-        .map((user: any) => (
-          <div
-            className="w-full max-w-md p-6 bg-white rounded-lg shadow-md"
-            key={user.id}
-          >
-            {!showPasswordReset ? (
-              <>
-                <div className="mb-4">
-                  <input
-                    className="w-full px-3 py-2 border rounded-lg"
-                    onChange={handleFileChange}
-                    type="file"
-                  />
-                </div>
-                <div className="mb-4">
-                  <label className="block text-gray-700">Tên:</label>
-                  <input
-                    className="w-full px-3 py-2 border rounded-lg"
-                    type="text"
-                    value={userName || user.name}
-                    onChange={(e) => setUserName(e.target.value)}
-                  />
-                </div>
-                <div className="mb-4">
-                  <label className="block text-gray-700">Email:</label>
-                  <input
-                    className="w-full px-3 py-2 border rounded-lg"
-                    type="text"
-                    value={user.email}
-                    readOnly
-                  />
-                </div>
-                {(imgUrl || user.avtUrl) && (
+    <>
+      <Header></Header>
+      <div className="w-full h-screen flex justify-center items-center bg-gray-100">
+        {users
+          .filter((user: any) => user.loginStatus)
+          .map((user: any) => (
+            <div
+              className="w-full max-w-md p-6 bg-white rounded-lg shadow-md"
+              key={user.id}
+            >
+              {!showPasswordReset ? (
+                <>
                   <div className="mb-4">
-                    <img
-                      className="rounded-full w-20 h-20 object-cover"
-                      src={imgUrl || user.avtUrl}
-                      alt="User"
+                    <input
+                      className="w-full px-3 py-2 border rounded-lg"
+                      onChange={handleFileChange}
+                      type="file"
                     />
                   </div>
-                )}
-                <button
-                  onClick={() => handleUploadAvatar(user)}
-                  className="w-full px-3 py-2 text-white bg-green-600 rounded-lg hover:bg-green-500"
-                >
-                  Thay Đổi Ảnh Đại Diện
-                </button>
-                <button
-                  onClick={() => setShowPasswordReset(true)}
-                  className="w-full px-3 py-2 mt-4 text-blue-600"
-                >
-                  Đổi Mật Khẩu
-                </button>
-                <button
-                  onClick={() => handleSaveInfo(user)}
-                  className="w-full px-3 py-2 mt-4 text-white bg-green-600 rounded-lg hover:bg-green-500"
-                >
-                  Lưu Thông Tin
-                </button>
-              </>
-            ) : (
-              <div>
-                <button
-                  onClick={() => setShowPasswordReset(false)}
-                  className="mb-4 p-[10px] bg-gray-300 rounded"
-                >
-                  Quay Lại
-                </button>
-                <div className="mb-4">
-                  <label className="block text-gray-700">
-                    Nhập Mật Khẩu Cũ:
-                  </label>
-                  <input
-                    className="w-full px-3 py-2 border rounded-lg"
-                    type="password"
-                    value={oldPassword}
-                    onChange={(e) => setOldPassword(e.target.value)}
-                  />
+                  <div className="mb-4">
+                    <label className="block text-gray-700">Tên:</label>
+                    <input
+                      className="w-full px-3 py-2 border rounded-lg"
+                      type="text"
+                      value={userName || user.name}
+                      onChange={(e) => setUserName(e.target.value)}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-gray-700">Email:</label>
+                    <input
+                      className="w-full px-3 py-2 border rounded-lg"
+                      type="text"
+                      value={user.email}
+                      readOnly
+                    />
+                  </div>
+                  {(imgUrl || user.avtUrl) && (
+                    <div className="mb-4">
+                      <img
+                        className="rounded-full w-20 h-20 object-cover"
+                        src={imgUrl || user.avtUrl}
+                        alt="User"
+                      />
+                    </div>
+                  )}
+                  <button
+                    onClick={() => handleUploadAvatar(user)}
+                    className="w-full px-3 py-2 text-white bg-green-600 rounded-lg hover:bg-green-500"
+                  >
+                    Thay Đổi Ảnh Đại Diện
+                  </button>
+                  <button
+                    onClick={() => setShowPasswordReset(true)}
+                    className="w-full px-3 py-2 mt-4 text-blue-600"
+                  >
+                    Đổi Mật Khẩu
+                  </button>
+                  <button
+                    onClick={() => handleSaveInfo(user)}
+                    className="w-full px-3 py-2 mt-4 text-white bg-green-600 rounded-lg hover:bg-green-500"
+                  >
+                    Lưu Thông Tin
+                  </button>
+                </>
+              ) : (
+                <div>
+                  <button
+                    onClick={() => setShowPasswordReset(false)}
+                    className="mb-4 p-[10px] bg-gray-300 rounded"
+                  >
+                    Quay Lại
+                  </button>
+                  <div className="mb-4">
+                    <label className="block text-gray-700">
+                      Nhập Mật Khẩu Cũ:
+                    </label>
+                    <input
+                      className="w-full px-3 py-2 border rounded-lg"
+                      type="password"
+                      value={oldPassword}
+                      onChange={(e) => setOldPassword(e.target.value)}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-gray-700">
+                      Nhập Mật Khẩu Mới:
+                    </label>
+                    <input
+                      className="w-full px-3 py-2 border rounded-lg"
+                      type="password"
+                      value={newPassword}
+                      onChange={(e) => setNewPassword(e.target.value)}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-gray-700">
+                      Nhập Lại Mật Khẩu Mới:
+                    </label>
+                    <input
+                      className="w-full px-3 py-2 border rounded-lg"
+                      type="password"
+                      value={confirmNewPassword}
+                      onChange={(e) => setConfirmNewPassword(e.target.value)}
+                    />
+                  </div>
+                  <button
+                    onClick={() => handleSaveInfo(user)}
+                    className="w-full px-3 py-2 text-white bg-green-600 rounded-lg hover:bg-green-500"
+                  >
+                    Lưu Mật Khẩu
+                  </button>
                 </div>
-                <div className="mb-4">
-                  <label className="block text-gray-700">
-                    Nhập Mật Khẩu Mới:
-                  </label>
-                  <input
-                    className="w-full px-3 py-2 border rounded-lg"
-                    type="password"
-                    value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
-                  />
-                </div>
-                <div className="mb-4">
-                  <label className="block text-gray-700">
-                    Nhập Lại Mật Khẩu Mới:
-                  </label>
-                  <input
-                    className="w-full px-3 py-2 border rounded-lg"
-                    type="password"
-                    value={confirmNewPassword}
-                    onChange={(e) => setConfirmNewPassword(e.target.value)}
-                  />
-                </div>
-                <button
-                  onClick={() => handleSaveInfo(user)}
-                  className="w-full px-3 py-2 text-white bg-green-600 rounded-lg hover:bg-green-500"
-                >
-                  Lưu Mật Khẩu
-                </button>
-              </div>
-            )}
-          </div>
-        ))}
-    </div>
+              )}
+            </div>
+          ))}
+      </div>
+      <Footer></Footer>
+    </>
   );
 }

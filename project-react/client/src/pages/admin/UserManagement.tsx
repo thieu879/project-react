@@ -11,11 +11,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { Account } from "../../interface/interface";
-import {
-  getUsers,
-  updateUserLoginStatus,
-} from "../../stores/reducers/managementReducer";
 import { AppDispatch, RootState } from "../../stores/store";
+import { getUsers, updateUserLoginStatus } from "../../service/management.service";
 
 const UserManagement: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -25,9 +22,17 @@ const UserManagement: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 2;
 
+  const logined = localStorage.getItem("userId");
+  console.log(users);
+
+  const checkLogin = users.find((user: any) => user.id === logined);
+  console.log(checkLogin);
+
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
+
+
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -71,8 +76,8 @@ const UserManagement: React.FC = () => {
   };
 
   return (
-    <div className="flex">
-      <SidebarAdmin />
+    <>
+      {/* <SidebarAdmin /> */}
       <div className="ml-6 flex-grow">
         <div className="flex items-center mb-4">
           <input
@@ -111,7 +116,6 @@ const UserManagement: React.FC = () => {
               <th className="py-2 px-4">Email</th>
               <th className="py-2 px-4">Số Điện Thoại</th>
               <th className="py-2 px-4">Trạng Thái</th>
-              <th className="py-2 px-4">Hành Động</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
@@ -137,14 +141,6 @@ const UserManagement: React.FC = () => {
                     ) : (
                       <i className="fa-solid fa-lock"></i>
                     )}
-                  </button>
-                </td>
-                <td className="py-2 px-4 text-center">
-                  <button className="mr-2">
-                    <FontAwesomeIcon icon={faWrench} />
-                  </button>
-                  <button>
-                    <FontAwesomeIcon icon={faTrash} />
                   </button>
                 </td>
               </tr>
@@ -178,7 +174,7 @@ const UserManagement: React.FC = () => {
         </div>
       </div>
       <div></div>
-    </div>
+    </>
   );
 };
 
